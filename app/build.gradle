@@ -19,6 +19,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "DATABASE_NAME", "\"infinite-scroll-db\"")
+        buildConfigField("String", "API_KEY", "\"DEMO_KEY\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.nasa.gov/\"")
     }
 
     buildFeatures {
