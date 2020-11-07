@@ -2,6 +2,7 @@ package com.example.iterativechallenger.data.data_sources
 
 import com.example.iterativechallenger.BuildConfig
 import com.example.iterativechallenger.core.exceptions.*
+import com.example.iterativechallenger.core.utils.Constantes
 import com.example.iterativechallenger.data.api.ApiService
 import com.example.iterativechallenger.data.models.ApodDataResponse
 import java.text.SimpleDateFormat
@@ -11,7 +12,8 @@ class ApodRemoteDataSourceImpl(private val api : ApiService) : ApodRemoteDataSou
 
     override suspend fun getApod(dataInicial : Calendar, dataFinal : Calendar): List<ApodDataResponse> {
 
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        val sdf = SimpleDateFormat(Constantes.FORMATO_ANO_MES_DIA, Locale.US)
+
         val startDate = sdf.format(dataInicial.time)
         val endDate = sdf.format(dataFinal.time)
 
