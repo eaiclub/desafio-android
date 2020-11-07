@@ -15,13 +15,9 @@ class ApodRepository @Inject constructor(
     private val apodMapper: ApodMapper
 ) {
 
-    companion object {
-        private const val PAGE_SIZE = 30
-    }
-
-    fun getApod(pageSize : Int = 30, pageIndex : Int = 1) : Flow<PagingData<Apod>> {
+    fun getApod(pageSize : Int = 30) : Flow<PagingData<Apod>> {
         return Pager(
-            config = PagingConfig(enablePlaceholders = false, pageSize = PAGE_SIZE),
+            config = PagingConfig(enablePlaceholders = false, pageSize = pageSize),
             pagingSourceFactory = { ApodPagingSource(apodDao) }
         ).flow
     }
