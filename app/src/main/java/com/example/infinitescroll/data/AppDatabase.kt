@@ -11,6 +11,7 @@ import com.example.infinitescroll.model.Apod
 @Database(entities = [Apod::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
+    abstract fun apodDao(): ApodDao
 
     companion object {
 
