@@ -8,5 +8,5 @@ import retrofit2.http.Url
 interface ApiService {
 
     @GET
-    suspend fun getApods(@Url url : String) : Response<ApodDataResponse>
+    suspend fun getApods(@Url url : String) : Response<List<ApodDataResponse>>
 }
