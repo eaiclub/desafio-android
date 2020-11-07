@@ -8,15 +8,11 @@ import java.util.*
 @Entity(tableName = "apods")
 data class Apod(
     val copyright : String,
-    val date : Calendar,
+    @PrimaryKey val date : Calendar,
     val explanation : String,
     val hdUrl : String,
     val mediaType : String,
     val serviceVersion : String,
     val title : String,
     val url : String
-) {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var apodId: Long = 0
-}
+)

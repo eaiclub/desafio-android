@@ -8,7 +8,7 @@ class ApodPagingSource(
 ) : PagingSource<Int, Apod>() {
 
     companion object {
-        private const val STARTING_PAGE_INDEX = 1
+        private const val STARTING_PAGE_INDEX = 0
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Apod> {
@@ -16,7 +16,7 @@ class ApodPagingSource(
         return try {
             val apods = apodDao.getApods(params.loadSize, pageIndex)
             LoadResult.Page(
-                data = apods.value!!,
+                data = apods,
                 prevKey = if (pageIndex == STARTING_PAGE_INDEX) null else pageIndex - 1,
                 nextKey = pageIndex + 1
             )

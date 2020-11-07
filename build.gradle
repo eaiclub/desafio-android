@@ -31,6 +31,7 @@ buildscript {
         testExtJunit = '1.1.2'
         uiAutomatorVersion = '2.2.0'
         workVersion = '2.4.0'
+        kotlin_version = '1.3.72'
     }
 
     repositories {
