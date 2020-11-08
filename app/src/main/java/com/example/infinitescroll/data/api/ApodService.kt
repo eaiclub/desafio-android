@@ -1,7 +1,7 @@
-package com.example.infinitescroll.api
+package com.example.infinitescroll.data.api
 
 import com.example.infinitescroll.BuildConfig
-import com.example.infinitescroll.model.ApodResponse
+import com.example.infinitescroll.data.response.ApodResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
@@ -17,6 +17,13 @@ interface ApodService {
         @Query("date") date: String,
         @Query("api_key") apiKey : String = BuildConfig.API_KEY
     ): ApodResponse
+
+    @GET("planetary/apod")
+    suspend fun getApodRange(
+            @Query("start_date") startDate: String,
+            @Query("end_date") endDate: String,
+            @Query("api_key") apiKey : String = BuildConfig.API_KEY
+    ): List<ApodResponse>
 
     companion object {
         private const val BASE_URL = BuildConfig.BASE_URL

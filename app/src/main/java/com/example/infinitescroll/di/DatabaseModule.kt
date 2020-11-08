@@ -1,8 +1,8 @@
 package com.example.infinitescroll.di
 
 import android.content.Context
-import com.example.infinitescroll.data.ApodDao
-import com.example.infinitescroll.data.AppDatabase
+import com.example.infinitescroll.data.local.ApodDao
+import com.example.infinitescroll.data.local.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

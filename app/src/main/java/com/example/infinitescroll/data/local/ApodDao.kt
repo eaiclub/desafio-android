@@ -1,11 +1,10 @@
-package com.example.infinitescroll.data
+package com.example.infinitescroll.data.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.infinitescroll.model.Apod
+import com.example.infinitescroll.data.model.Apod
 
 @Dao
 interface ApodDao {

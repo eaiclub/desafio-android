@@ -1,4 +1,4 @@
-package com.example.infinitescroll.data
+package com.example.infinitescroll.data.local
 
 import android.content.Context
 import androidx.room.Database
@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.infinitescroll.BuildConfig
-import com.example.infinitescroll.model.Apod
+import com.example.infinitescroll.data.model.Apod
 import com.example.infinitescroll.worker.SeedDatabaseWorker
 
 @Database(entities = [Apod::class], version = 1, exportSchema = false)
@@ -22,8 +22,10 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile private var instance: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
-            return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+            return instance
+                    ?: synchronized(this) {
+                instance
+                        ?: buildDatabase(context).also { instance = it }
             }
         }
 

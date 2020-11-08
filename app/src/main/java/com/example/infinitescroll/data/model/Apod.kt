@@ -1,6 +1,5 @@
-package com.example.infinitescroll.model
+package com.example.infinitescroll.data.model
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*

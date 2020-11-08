@@ -1,6 +1,6 @@
 package com.example.infinitescroll.di
 
-import com.example.infinitescroll.api.ApodService
+import com.example.infinitescroll.data.api.ApodService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

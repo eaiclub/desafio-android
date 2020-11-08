@@ -1,7 +1,8 @@
 package com.example.infinitescroll.data
 
 import androidx.paging.PagingSource
-import com.example.infinitescroll.model.Apod
+import com.example.infinitescroll.data.local.ApodDao
+import com.example.infinitescroll.data.model.Apod
 
 class ApodPagingSource(
     private val apodDao: ApodDao
