@@ -5,12 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.example.infinitescroll.BuildConfig
 import com.example.infinitescroll.data.model.Apod
-import com.example.infinitescroll.worker.SeedDatabaseWorker
 
 @Database(entities = [Apod::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
@@ -30,17 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context, AppDatabase::class.java, BuildConfig.DATABASE_NAME)
-                .addCallback(
-                    object : RoomDatabase.Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
-                            WorkManager.getInstance(context).enqueue(request)
-                        }
-                    }
-                )
-                .build()
+            return Room.databaseBuilder(context, AppDatabase::class.java, BuildConfig.DATABASE_NAME).build()
         }
     }
 }

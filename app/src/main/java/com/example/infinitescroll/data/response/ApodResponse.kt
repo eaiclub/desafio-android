@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ApodResponse(
     val copyright : String?,
-    val date : String?,
+    val date : String,
     val explanation : String?,
     @SerializedName("hdurl") val hdUrl : String?,
     @SerializedName("media_type") val mediaType : String?,
