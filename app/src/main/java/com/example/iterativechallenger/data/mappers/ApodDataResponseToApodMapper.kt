@@ -13,12 +13,12 @@ class ApodDataResponseToApodMapper : Mapper<List<ApodDataResponse>, List<Apod>> 
 
         return input.map {
             Apod(
-                it.title,
-                it.copyright,
-                sdf.parse(it.date)!!,
-                it.explanation,
-                it.url,
-                it.hdurl
+                it.title ?: "",
+                it.copyright?: "",
+                sdf.parse(it.date?: "") ?: Date(),
+                it.explanation ?: "",
+                it.url ?: "",
+                it.hdurl ?: ""
             )
         }
     }
