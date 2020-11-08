@@ -14,8 +14,8 @@ class MainViewModel(
     private val getListApodUseCase: GetListApod
 ) : ViewModel() {
 
-    private var diaInicioRange = 0
-    private val diaFimRange = -10
+    private var diaFimRange = 0
+    private var diaInicioRange = -10
     private val dataInicio = Calendar.getInstance()
     private val dataFim = Calendar.getInstance()
 
@@ -39,7 +39,7 @@ class MainViewModel(
     }
 
     fun loadMoreApods(){
-        diaInicioRange = diaFimRange
+        diaFimRange = diaInicioRange
         getApods()
     }
 

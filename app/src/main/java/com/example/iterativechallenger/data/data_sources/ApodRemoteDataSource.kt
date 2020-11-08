@@ -5,5 +5,5 @@ import java.util.*
 
 interface ApodRemoteDataSource {
 
-    suspend fun getApod(dataFinal : Calendar, dataInicial : Calendar): List<ApodDataResponse>
+    suspend fun getApod(dataInicial : Calendar, dataFinal : Calendar): List<ApodDataResponse>
 }

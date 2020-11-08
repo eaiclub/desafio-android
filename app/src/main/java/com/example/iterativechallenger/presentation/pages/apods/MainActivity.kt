@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     private fun showApods(data: Any?) {
 
         progress_bar.visibility = View.GONE
-        
+
         if(data is List<*>) {
 //            Toast.makeText(this, "deu bom, tamanho: ${data.size}", Toast.LENGTH_SHORT).show()
 
