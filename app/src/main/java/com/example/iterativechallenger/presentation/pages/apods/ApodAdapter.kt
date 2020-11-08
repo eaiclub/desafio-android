@@ -14,7 +14,7 @@ import com.example.iterativechallenger.domain.entities.Apod
 import kotlinx.android.synthetic.main.item_apod.view.*
 
 class ApodAdapter(
-    private val listaApod : List<Apod>,
+    private var listaApod : ArrayList<Apod>,
     private val onMoreClick :(apod : Apod) -> Unit) : RecyclerView.Adapter<ApodAdapter.ApodViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApodViewHolder {
@@ -35,12 +35,17 @@ class ApodAdapter(
             onMoreClick(apod)
         }
     }
+    fun setList(list:List<Apod>){
+        this.listaApod.addAll(list)
+        notifyDataSetChanged()
+    }
 
 //    @BindingAdapter("getImageFromUrl")
 //    fun bindImage(imgView : ImageView, imageUrl : String){
 //        Glide.with(imgView.context).load(imageUrl).into(imgView)
 //
 //    }
+
 
     inner class ApodViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val binding: ItemApodBinding? = DataBindingUtil.bind(view)

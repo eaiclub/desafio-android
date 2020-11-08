@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.iterativechallenger.core.utils.Response
 import com.example.iterativechallenger.core.utils.Status
 import com.example.iterativechallenger.domain.entities.Apod
+import com.example.iterativechallenger.presentation.widgets.InfiniteScrollListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val viewModel : MainViewModel by viewModel()
+    private var apodAdapter : ApodAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +45,21 @@ class MainActivity : AppCompatActivity() {
         progress_bar.visibility = View.GONE
 
         if(data is List<*>) {
-//            Toast.makeText(this, "deu bom, tamanho: ${data.size}", Toast.LENGTH_SHORT).show()
 
-            val layoutManager = GridLayoutManager(this, 2)
-            rv_apods.layoutManager = layoutManager
-            rv_apods.adapter = ApodAdapter(data as List<Apod>, ::onMoreClick)
-
+            if(apodAdapter == null) {
+                val layoutManager = GridLayoutManager(this, 2)
+                rv_apods.layoutManager = layoutManager
+                apodAdapter = ApodAdapter(data as ArrayList<Apod>, ::onMoreClick)
+                rv_apods.adapter = apodAdapter
+                rv_apods.addOnScrollListener(
+                    InfiniteScrollListener({
+                        viewModel.loadMoreApods()
+                    }, layoutManager)
+                )
+                rv_apods.adapter = apodAdapter
+            }
+            else
+                apodAdapter?.setList(data as List<Apod>)
         }
 
     }
