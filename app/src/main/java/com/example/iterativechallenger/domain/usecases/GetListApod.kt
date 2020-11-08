@@ -6,5 +6,5 @@ import java.util.*
 
 class GetListApod(private val repository: ApodRepository) {
 
-    suspend operator fun invoke(dataInicial : Calendar, dataFinal : Calendar) : List<Apod> = repository.getApod(dataInicial, dataFinal)
+    suspend operator fun invoke(dataFinal : Calendar, dataInicial : Calendar) : List<Apod> = repository.getApod(dataFinal, dataInicial)
 }

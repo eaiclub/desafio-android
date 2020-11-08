@@ -11,9 +11,9 @@ class ApodRepositoryImpl(
     private val apodDataResponseToApodMapper: ApodDataResponseToApodMapper
 ) : ApodRepository{
 
-    override suspend fun getApod(dataInicial: Calendar, dataFinal: Calendar): List<Apod> {
+    override suspend fun getApod(dataFinal: Calendar, dataInicial: Calendar): List<Apod> {
 
-        val response = remoteDataSource.getApod(dataInicial, dataFinal)
+        val response = remoteDataSource.getApod(dataFinal, dataInicial)
 
         return apodDataResponseToApodMapper.map(response)
     }
