@@ -1,6 +1,7 @@
 package com.example.infinitescroll.di
 
 import com.example.infinitescroll.data.api.ApodService
+import com.example.infinitescroll.data.api.ResponseHandler
 import com.example.infinitescroll.data.local.ApodDao
 import com.example.infinitescroll.data.mapper.ApodMapper
 import com.example.infinitescroll.data.repository.ApodRepositoryImpl
@@ -21,7 +22,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideApodRepository(apodDao : ApodDao, apodService: ApodService, apodMapper: ApodMapper): ApodRepository {
-        return ApodRepositoryImpl(apodDao, apodService, apodMapper)
+    fun provideApodRepository(apodDao : ApodDao, apodService: ApodService, apodMapper: ApodMapper, responseHandler: ResponseHandler): ApodRepository {
+        return ApodRepositoryImpl(apodDao, apodService, apodMapper, responseHandler)
     }
 }

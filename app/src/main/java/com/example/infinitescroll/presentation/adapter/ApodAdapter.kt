@@ -16,7 +16,7 @@ import com.bumptech.glide.request.target.Target
 import com.example.infinitescroll.R
 import com.example.infinitescroll.data.model.Apod
 import com.example.infinitescroll.databinding.ItemApodBinding
-import com.example.infinitescroll.presentation.ApodListFragmentDirections
+import com.example.infinitescroll.presentation.fragment.ApodListFragmentDirections
 
 class ApodAdapter : PagingDataAdapter<Apod, ApodAdapter.ApodViewHolder>(ApodDiffCallback()) {
 

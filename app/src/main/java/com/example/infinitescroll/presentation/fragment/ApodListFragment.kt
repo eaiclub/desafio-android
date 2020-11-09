@@ -1,11 +1,13 @@
-package com.example.infinitescroll.presentation
+package com.example.infinitescroll.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.example.infinitescroll.databinding.FragmentApodListBinding
 import com.example.infinitescroll.presentation.adapter.ApodAdapter
@@ -16,6 +18,7 @@ import kotlinx.coroutines.launch
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.recyclerview.widget.RecyclerView
+import com.example.infinitescroll.R
 import com.example.infinitescroll.presentation.util.ApodRemoteMediator
 
 @AndroidEntryPoint
@@ -51,6 +54,11 @@ class ApodListFragment : Fragment() {
                 adapter.submitData(it)
             }
         }
+
+        viewModel.getErrorMessage().observe(viewLifecycleOwner, Observer {
+            if(it)
+                Toast.makeText(context, getString(R.string.connection_error), Toast.LENGTH_SHORT).show()
+        })
 
         return binding.root
     }

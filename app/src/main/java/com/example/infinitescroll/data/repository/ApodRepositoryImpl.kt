@@ -2,9 +2,12 @@ package com.example.infinitescroll.data.repository
 
 import androidx.paging.DataSource
 import com.example.infinitescroll.data.api.ApodService
+import com.example.infinitescroll.data.api.Resource
+import com.example.infinitescroll.data.api.ResponseHandler
 import com.example.infinitescroll.data.local.ApodDao
 import com.example.infinitescroll.data.mapper.ApodMapper
 import com.example.infinitescroll.data.model.Apod
+import com.example.infinitescroll.data.response.ApodResponse
 import com.example.infinitescroll.domain.repository.ApodRepository
 import javax.inject.Inject
 
@@ -15,7 +18,8 @@ import javax.inject.Inject
 class ApodRepositoryImpl @Inject constructor(
         private val apodDao: ApodDao,
         private val apodService: ApodService,
-        private val apodMapper: ApodMapper
+        private val apodMapper: ApodMapper,
+        private val responseHandler: ResponseHandler
 ): ApodRepository {
 
     override fun getApod() : DataSource.Factory<Int, Apod> {
@@ -29,11 +33,16 @@ class ApodRepositoryImpl @Inject constructor(
         return apod
     }
 
-    override suspend fun loadApodRange(startDate : String, endDate : String) : List<Apod> {
-        val apodResponseList = apodService.getApodRange(startDate, endDate)
+    override suspend fun loadApodRange(startDate : String, endDate : String) : Resource<List<Apod>> {
+        val apodResponseList : List<ApodResponse>
+        try {
+            apodResponseList = apodService.getApodRange(startDate, endDate)
+        } catch (e: Exception) {
+            return responseHandler.handleException(e)
+        }
         val apodList = apodMapper.map(apodResponseList)
         apodDao.insertApodList(apodList)
-        return apodList
+        return responseHandler.handleSuccess(apodList)
     }
 
     override suspend fun getLastApod(): Apod? {

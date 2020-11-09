@@ -92,6 +92,7 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
     implementation "com.facebook.fresco:fresco:$rootProject.frescoVersion"
+    implementation 'com.igreenwood.loupe:loupe:1.2.1'
 
     // Data
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"

@@ -10,7 +10,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.example.infinitescroll.data.model.Apod
-import com.example.infinitescroll.presentation.ApodActivity
+import com.example.infinitescroll.presentation.activity.ApodActivity
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -22,7 +22,8 @@ class ApodDetailFragmentTest {
 
     @Rule
     @JvmField
-    val activityScenario : ActivityScenarioRule<ApodActivity> = ActivityScenarioRule(ApodActivity::class.java)
+    val activityScenario : ActivityScenarioRule<ApodActivity> = ActivityScenarioRule(
+        ApodActivity::class.java)
 
     private val apod = Apod(
             "copyright",

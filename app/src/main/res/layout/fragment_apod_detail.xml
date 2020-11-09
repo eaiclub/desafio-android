@@ -15,15 +15,17 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/constraint"
+            android:background="@color/black">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/image"
+                android:onClick="@{() -> viewModel.onImageClicked()}"
                 app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@{viewModel.apod.title}"
-                loadImage="@{viewModel.apod.url}"/>
+                android:contentDescription="@{viewModel.apod.title}" />
 
             <TextView
                 android:layout_width="wrap_content"

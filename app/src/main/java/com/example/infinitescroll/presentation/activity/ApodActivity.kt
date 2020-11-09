@@ -1,4 +1,4 @@
-package com.example.infinitescroll.presentation
+package com.example.infinitescroll.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

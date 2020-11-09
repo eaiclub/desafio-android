@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/apodListFragment"
-        android:name="com.example.infinitescroll.presentation.ApodListFragment"
+        android:name="com.example.infinitescroll.presentation.fragment.ApodListFragment"
         android:label="@string/apods" >
         <action
             android:id="@+id/action_apodListFragment_to_apodDetailFragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/apodDetailFragment"
-        android:name="com.example.infinitescroll.presentation.ApodDetailFragment"
+        android:name="com.example.infinitescroll.presentation.fragment.ApodDetailFragment"
         android:label="@string/details"
         tools:layout="@layout/fragment_apod_detail" >
         <argument
