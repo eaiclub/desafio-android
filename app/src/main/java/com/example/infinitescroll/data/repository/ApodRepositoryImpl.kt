@@ -1,5 +1,6 @@
 package com.example.infinitescroll.data.repository
 
+import androidx.paging.DataSource
 import com.example.infinitescroll.data.api.ApodService
 import com.example.infinitescroll.data.local.ApodDao
 import com.example.infinitescroll.data.mapper.ApodMapper
@@ -7,14 +8,18 @@ import com.example.infinitescroll.data.model.Apod
 import com.example.infinitescroll.domain.repository.ApodRepository
 import javax.inject.Inject
 
+/**
+ * Implementation of ApodRepository
+ * @see com.example.infinitescroll.domain.repository.ApodRepository
+ */
 class ApodRepositoryImpl @Inject constructor(
         private val apodDao: ApodDao,
         private val apodService: ApodService,
         private val apodMapper: ApodMapper
 ): ApodRepository {
 
-    override suspend fun getApod(pageSize : Int, pageIndex : Int) : List<Apod> {
-        return apodDao.getApods(pageSize, pageIndex)
+    override fun getApod() : DataSource.Factory<Int, Apod> {
+        return apodDao.getApods()
     }
 
     override suspend fun loadApod(date : String) : Apod {
@@ -27,9 +32,7 @@ class ApodRepositoryImpl @Inject constructor(
     override suspend fun loadApodRange(startDate : String, endDate : String) : List<Apod> {
         val apodResponseList = apodService.getApodRange(startDate, endDate)
         val apodList = apodMapper.map(apodResponseList)
-        apodList.forEach {
-            apodDao.insertApod(it)
-        }
+        apodDao.insertApodList(apodList)
         return apodList
     }
 

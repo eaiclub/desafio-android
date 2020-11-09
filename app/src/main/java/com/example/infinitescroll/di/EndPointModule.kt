@@ -7,6 +7,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
+/**
+ * Dependency injection for remote data source classes.
+ */
+
 @InstallIn(ApplicationComponent::class)
 @Module
 class EndPointModule {

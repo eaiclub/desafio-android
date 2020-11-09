@@ -1,9 +1,12 @@
-package com.example.infinitescroll.adapter
+package com.example.infinitescroll.presentation.adapter
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 
+/**
+ * bindings for xml use.
+ */
 class BindingAdapter {
 
     companion object {
@@ -13,7 +16,7 @@ class BindingAdapter {
         fun loadImage(view: ImageView, imageUrl: String?) {
             if(imageUrl.isNullOrBlank())
                 return
-            Picasso.get()
+            Glide.with(view)
                 .load(imageUrl)
                 .into(view)
         }

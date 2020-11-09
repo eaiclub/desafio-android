@@ -10,6 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * Interface to access apod api.
+ */
 interface ApodService {
 
     @GET("planetary/apod")

@@ -1,10 +1,11 @@
 package com.example.infinitescroll.domain.repository
 
+import androidx.paging.DataSource
 import com.example.infinitescroll.data.model.Apod
 
 interface ApodRepository {
 
-    suspend fun getApod(pageSize : Int, pageIndex : Int) : List<Apod>
+    fun getApod() : DataSource.Factory<Int, Apod>
 
     suspend fun loadApod(date : String) : Apod
 
