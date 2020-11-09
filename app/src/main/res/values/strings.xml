@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">APOD</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="apods">APODS</string>
+    <string name="details">Detalhes</string>
+    <string name="image_apod">Imagem Apod</string>
+    <string name="connection_error">Erro ao buscar APODs!</string>
+</resources>
