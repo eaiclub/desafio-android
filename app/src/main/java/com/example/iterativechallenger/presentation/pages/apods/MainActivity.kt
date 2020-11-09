@@ -4,16 +4,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.iterativechallenger.R
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.iterativechallenger.R
 import com.example.iterativechallenger.core.utils.Response
 import com.example.iterativechallenger.core.utils.Status
 import com.example.iterativechallenger.domain.entities.Apod
 import com.example.iterativechallenger.presentation.widgets.InfiniteScrollListener
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlinx.android.synthetic.main.activity_main.*
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 @Suppress("UNCHECKED_CAST")
@@ -28,11 +27,33 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.response().observe(this, Observer { response -> processResponse(response) })
 
-        viewModel.getApods()
+        if (savedInstanceState != null) {
+            apodAdapter = savedInstanceState.getSerializable("adapter") as ApodAdapter
+            makeRecyclerView()
+        }
+        else {
+            viewModel.getApods()
+        }
 
     }
 
-    private fun processResponse(response : Response){
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable("adapter", apodAdapter)
+    }
+
+    private fun makeRecyclerView(){
+
+        val layoutManager = GridLayoutManager(this, 2)
+        rv_apods.adapter = apodAdapter
+        rv_apods.layoutManager = layoutManager
+        rv_apods.addOnScrollListener(
+                InfiniteScrollListener({
+                    viewModel.loadMoreApods()
+                }, layoutManager)
+        )
+    }
+    private fun processResponse(response: Response){
         when (response.status) {
             Status.LOADING -> showLoading()
             Status.SUCCESS -> showApods(response.data)
@@ -47,16 +68,8 @@ class MainActivity : AppCompatActivity() {
         if(data is List<*>) {
 
             if(apodAdapter == null) {
-                val layoutManager = GridLayoutManager(this, 2)
-                rv_apods.layoutManager = layoutManager
                 apodAdapter = ApodAdapter(data as ArrayList<Apod>, ::onMoreClick)
-                rv_apods.adapter = apodAdapter
-                rv_apods.addOnScrollListener(
-                    InfiniteScrollListener({
-                        viewModel.loadMoreApods()
-                    }, layoutManager)
-                )
-                rv_apods.adapter = apodAdapter
+                makeRecyclerView()
             }
             else
                 apodAdapter?.setList(data as List<Apod>)
@@ -74,10 +87,11 @@ class MainActivity : AppCompatActivity() {
 
         progress_bar.visibility = View.GONE
         Toast.makeText(this, "Erro ao baixar informações", Toast.LENGTH_SHORT).show()
+        println(error)
 
     }
 
-    private fun onMoreClick(apod : Apod){
+    private fun onMoreClick(apod: Apod){
         Toast.makeText(this, apod.title, Toast.LENGTH_SHORT).show()
     }
 }

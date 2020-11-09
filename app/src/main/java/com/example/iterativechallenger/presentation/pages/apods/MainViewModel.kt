@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.iterativechallenger.core.utils.Response
+import com.example.iterativechallenger.domain.entities.Apod
 import com.example.iterativechallenger.domain.usecases.GetListApod
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,7 @@ class MainViewModel(
     private var diaInicioRange = -10
     private val dataInicio = Calendar.getInstance()
     private val dataFim = Calendar.getInstance()
+    private var apodList = arrayListOf<Apod>()
 
     private val response = MutableLiveData<Response>()
 
@@ -30,6 +32,7 @@ class MainViewModel(
         CoroutineScope(Dispatchers.IO).launch {
             try {
                     val result = getListApodUseCase(dataInicio, dataFim)
+                    apodList.addAll(result)
                     response.postValue(Response.success(result))
                 }
             catch (t : Throwable){
@@ -43,6 +46,7 @@ class MainViewModel(
         getApods()
     }
 
+    fun getApodList() = apodList
 
     fun response(): MutableLiveData<Response> {
         return response

@@ -3,8 +3,6 @@ package com.example.iterativechallenger.presentation.pages.apods
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,10 +10,11 @@ import com.example.iterativechallenger.R
 import com.example.iterativechallenger.databinding.ItemApodBinding
 import com.example.iterativechallenger.domain.entities.Apod
 import kotlinx.android.synthetic.main.item_apod.view.*
+import java.io.Serializable
 
 class ApodAdapter(
     private var listaApod : ArrayList<Apod>,
-    private val onMoreClick :(apod : Apod) -> Unit) : RecyclerView.Adapter<ApodAdapter.ApodViewHolder>(){
+    private val onMoreClick :(apod : Apod) -> Unit) : RecyclerView.Adapter<ApodAdapter.ApodViewHolder>(), Serializable{
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApodViewHolder {
         return ApodViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_apod, parent, false))
