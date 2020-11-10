@@ -24,19 +24,28 @@ import java.util.*
 
 
 class MoreDetailsActivity : YouTubeBaseActivity() {
+
+    private val sdf = SimpleDateFormat(Constantes.FORMATO_DIA_MES_ANO, Locale.US)
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_more_details)
 
         val apod = intent.getSerializableExtra("apod") as Apod
-        val sdf = SimpleDateFormat(Constantes.FORMATO_DIA_MES_ANO, Locale.US)
-        Glide.with(this).load(apod.url).into(photo_view)
+
+        if(apod.mediaType == Constantes.TIPO_VIDEO)
+            Glide.with(this).load(R.drawable.video_placeholder_black).into(photo_view)
+        else
+            Glide.with(this).load(apod.url).into(photo_view)
+
+        tv_title.text = apod.title
         tv_explanation.text = apod.explanation
         if(apod.copyright.isNotEmpty())
             tv_copyright.text = "copyright: ${apod.copyright}"
         else
             tv_copyright.visibility = View.GONE
-        
+
         tv_date.text = sdf.format(apod.date)
 
 

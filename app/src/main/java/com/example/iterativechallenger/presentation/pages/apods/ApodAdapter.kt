@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.iterativechallenger.R
+import com.example.iterativechallenger.core.utils.Constantes
 import com.example.iterativechallenger.databinding.ItemApodBinding
 import com.example.iterativechallenger.domain.entities.Apod
 import com.squareup.picasso.Picasso
@@ -31,8 +32,11 @@ class ApodAdapter(
         binding?.apod = apod
         binding?.executePendingBindings()
 
-        Glide.with(holder.itemView.iv_picture.context).load(apod.url).centerCrop().into(holder.itemView.iv_picture)
+        if(apod.mediaType == Constantes.TIPO_IMAGE)
+            Glide.with(holder.itemView.iv_picture.context).load(apod.url).centerCrop().into(holder.itemView.iv_picture)
 
+        else if(apod.mediaType == Constantes.TIPO_VIDEO)
+            Glide.with(holder.itemView.iv_picture.context).load(R.drawable.video_placeholder).centerCrop().into(holder.itemView.iv_picture)
 
         holder.itemView.iv_picture.setOnClickListener {
             onMoreClick(apod)
