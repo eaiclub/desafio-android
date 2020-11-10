@@ -6,7 +6,8 @@
     android:layout_height="48dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:background="#fff">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -15,7 +16,7 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         android:visibility="visible"
-        app:cardBackgroundColor="#0088FF"
+        app:cardBackgroundColor="#002747"
         app:cardCornerRadius="5dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
@@ -25,6 +26,7 @@
             android:id="@+id/text_view_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +40,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="#FFF"
+        android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
