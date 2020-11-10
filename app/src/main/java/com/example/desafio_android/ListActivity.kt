@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import java.util.stream.Collectors
 import android.util.Range
+import com.github.kittinunf.fuel.Fuel
 import java.util.stream.IntStream.range
 
 class ListActivity : AppCompatActivity() {
@@ -19,6 +20,16 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
+
+        Fuel.get("https://httpbin.org/get")
+            .response { request, response, result ->
+                println(request)
+                println(response)
+                val (bytes, error) = result
+                if (bytes != null) {
+                    println("[response bytes] ${String(bytes)}")
+                }
+            }
 
         recyclerView = findViewById(R.id.recycler_view_list)
         recyclerView.setHasFixedSize(true)
