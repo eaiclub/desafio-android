@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.iterativechallenger.R
+import com.example.iterativechallenger.core.utils.Constantes
 import com.example.iterativechallenger.core.utils.Response
 import com.example.iterativechallenger.core.utils.Status
 import com.example.iterativechallenger.domain.entities.Apod
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     private fun showError(error: Throwable?) {
 
         progress_bar.visibility = View.GONE
-        Toast.makeText(this, "Erro ao baixar informações", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, Constantes.ERRO_DOWNLOAD, Toast.LENGTH_SHORT).show()
         println(error)
 
     }

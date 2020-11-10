@@ -5,11 +5,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.iterativechallenger.BuildConfig
 import com.example.iterativechallenger.R
+import com.example.iterativechallenger.core.utils.Constantes
 import com.example.iterativechallenger.domain.entities.Apod
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
@@ -17,6 +19,8 @@ import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
 import kotlinx.android.synthetic.main.activity_more_details.*
 import kotlinx.android.synthetic.main.dialog_foto.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MoreDetailsActivity : YouTubeBaseActivity() {
@@ -25,14 +29,21 @@ class MoreDetailsActivity : YouTubeBaseActivity() {
         setContentView(R.layout.activity_more_details)
 
         val apod = intent.getSerializableExtra("apod") as Apod
+        val sdf = SimpleDateFormat(Constantes.FORMATO_DIA_MES_ANO, Locale.US)
         Glide.with(this).load(apod.url).into(photo_view)
         tv_explanation.text = apod.explanation
+        if(apod.copyright.isNotEmpty())
+            tv_copyright.text = "copyright: ${apod.copyright}"
+        else
+            tv_copyright.visibility = View.GONE
+        
+        tv_date.text = sdf.format(apod.date)
 
 
         photo_view.setOnClickListener {
-            if(apod.mediaType == "image")
+            if(apod.mediaType == Constantes.TIPO_IMAGE)
                 viewFullScreenPhoto(apod)
-            else if(apod.mediaType == "video")
+            else if(apod.mediaType == Constantes.TIPO_VIDEO)
                 showVideo(apod)
         }
     }
@@ -58,7 +69,7 @@ class MoreDetailsActivity : YouTubeBaseActivity() {
                     p0: YouTubePlayer.Provider?,
                     p1: YouTubeInitializationResult?
                 ) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(applicationContext, Constantes.ERRO_YOUTUBE, Toast.LENGTH_SHORT).show()
                 }
 
             }
