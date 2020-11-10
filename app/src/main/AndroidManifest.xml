@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
         <activity
-            android:name=".presentation.pages.photo.PhotoActivity"
+            android:name=".presentation.pages.more_details.MoreDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
 

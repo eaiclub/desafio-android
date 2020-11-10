@@ -10,5 +10,6 @@ data class Apod(
     val date : Date,
     val explanation : String,
     val url : String,
-    val hdUrl : String
+    val hdUrl : String,
+    val mediaType : String
 ) : Serializable

@@ -18,7 +18,8 @@ class ApodDataResponseToApodMapper : Mapper<List<ApodDataResponse>, List<Apod>> 
                 sdf.parse(it.date?: "") ?: Date(),
                 it.explanation ?: "",
                 it.url ?: "",
-                it.hdurl ?: ""
+                it.hdurl ?: "",
+                it.media_type ?: ""
             )
         }
     }
