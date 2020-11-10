@@ -1,8 +1,11 @@
 package com.example.iterativechallenger.presentation.pages.apods
 
+import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -10,9 +13,12 @@ import com.example.iterativechallenger.R
 import com.example.iterativechallenger.core.utils.Response
 import com.example.iterativechallenger.core.utils.Status
 import com.example.iterativechallenger.domain.entities.Apod
+import com.example.iterativechallenger.presentation.pages.photo.PhotoActivity
 import com.example.iterativechallenger.presentation.widgets.InfiniteScrollListener
+import com.github.chrisbanes.photoview.PhotoView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 
 @Suppress("UNCHECKED_CAST")
@@ -27,20 +33,11 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.response().observe(this, Observer { response -> processResponse(response) })
 
-        if (savedInstanceState != null) {
-            apodAdapter = savedInstanceState.getSerializable("adapter") as ApodAdapter
-            makeRecyclerView()
-        }
-        else {
-            viewModel.getApods()
-        }
+        viewModel.getApods()
 
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putSerializable("adapter", apodAdapter)
-    }
+
 
     private fun makeRecyclerView(){
 
@@ -92,6 +89,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onMoreClick(apod: Apod){
-        Toast.makeText(this, apod.title, Toast.LENGTH_SHORT).show()
+        val intent = Intent(applicationContext, PhotoActivity::class.java)
+        intent.putExtra("apod", apod)
+        startActivity(intent)
     }
+
 }

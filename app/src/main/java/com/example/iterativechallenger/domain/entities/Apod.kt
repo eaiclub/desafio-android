@@ -1,5 +1,6 @@
 package com.example.iterativechallenger.domain.entities
 
+import java.io.Serializable
 import java.util.*
 
 
@@ -10,4 +11,4 @@ data class Apod(
     val explanation : String,
     val url : String,
     val hdUrl : String
-)
+) : Serializable
