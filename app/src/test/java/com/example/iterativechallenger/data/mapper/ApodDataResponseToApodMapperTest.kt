@@ -1,4 +1,4 @@
-package com.example.iterativechallenger
+package com.example.iterativechallenger.data.mapper
 
 import com.example.iterativechallenger.core.utils.Constantes
 import com.example.iterativechallenger.data.mappers.ApodDataResponseToApodMapper
