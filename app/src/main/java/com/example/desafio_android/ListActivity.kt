@@ -56,7 +56,6 @@ class ListActivity : AppCompatActivity() {
             val sdf= SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             date.add(Calendar.DATE, -it)
             var result = sdf.format(date.time)
-            println("result $it "+result)
             listDate.add(result)
 
         }
@@ -79,19 +78,11 @@ class ListActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val data = response.body()
                         if (data != null) {
-                            println("data.url"+data.url)
                             img = data.url
-                            println("IMG "+img)
                             listImages.add(img+"")
-                            println("LIST IMAGES "+listImages)
-                        } else {
-                            println("is null")
                         }
-                    } else {
-                        println("not sucessful")
                     }
                     simpleTextAdapter.list = listImages
-                    //showNasaImages(listImages)
                 } catch (e: Exception) {
                     println(e)
                 }
@@ -99,11 +90,6 @@ class ListActivity : AppCompatActivity() {
         }
 
 
-    }
-
-    private fun showNasaImages(images: ArrayList<String>) {
-        println("IMAGES "+images)
-        simpleTextAdapter.list = images
     }
 
     private fun setupRecyclerView() = with(recyclerView) {

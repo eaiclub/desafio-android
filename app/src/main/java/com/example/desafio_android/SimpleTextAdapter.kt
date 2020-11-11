@@ -22,13 +22,6 @@ class SimpleTextAdapter(
         RecyclerView.ViewHolder(parent.inflate(VIEW_ID)) {
 
         fun bind(data: String) = with(itemView) {
-            println("DATA BB "+data)
-            //txt_simple_text.text = data
-
-            //txt_simple_text.text = "power"
-
-            //val image: AppCompatImageView = itemView.findViewById(R.id.imageView)
-            val link2 = "https://portalpopline.com.br/wp-content/uploads/2020/09/Britney-Spears-1.jpg"
             Picasso.get().load(data).into(imageView3)
         }
     }

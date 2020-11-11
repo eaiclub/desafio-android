@@ -20,5 +20,3 @@ interface ApiRequests {
 
 }
 
-//    @GET("myObjects/{id}")
-//    fun myObjectById(@Path("id") id: Int?, @Query("a_param") aParam: String?): Call<MyObject>
