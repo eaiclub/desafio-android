@@ -86,6 +86,9 @@ dependencies {
     /*Paging 3 */
 //    implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha08"
 
+    /* Mockk */
+    testImplementation "io.mockk:mockk:1.9.3"
+
     kapt 'com.android.databinding:compiler:3.1.4'
 
 }
