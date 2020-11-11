@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import java.util.stream.Collectors
 import android.util.Range
+import android.widget.ImageView
 import com.github.kittinunf.fuel.Fuel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -23,12 +24,14 @@ import java.util.stream.IntStream.range
 const val BASE_URL = "https://api.nasa.gov/"
 
 class ListActivity : AppCompatActivity() {
-    private var list: MutableList<Int> = mutableListOf()
+    //private var list: MutableList<Int> = mutableListOf()
+    private var list: MutableList<String> = mutableListOf<String>()
     private var lastItem: Int = 0
     private val listAdapter: NumberListAdapter = NumberListAdapter(::onBottomListener)
     private lateinit var recyclerView: RecyclerView
 
     private var TAG = "ListActivity"
+    private var img = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,8 @@ class ListActivity : AppCompatActivity() {
         //        }
         //    }
 
-        getCurrentData()
+        //Oficial
+        //getCurrentData()
 
         //layout_generate_new_fact.setOnClickListener {
         //    getCurrentData()
@@ -76,6 +80,8 @@ class ListActivity : AppCompatActivity() {
                     if (data != null) {
                         println("data.url"+data.url)
                         Log.d(TAG, data.url)
+                        img = data.url
+                        println("IMG "+img)
                     }
                 }
             } catch (e: Exception) {
@@ -95,11 +101,15 @@ class ListActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun generateMore() {
+        getCurrentData()
         val next = lastItem + 20
-        //val list: List<Int> = range(lastItem, next).boxed().collect(Collectors.toList())
         val range = range(lastItem, next).boxed().collect(Collectors.toList())
         lastItem = next
-        list.addAll(range)
+        //list.addAll(range)
+
+        val arrayList: ArrayList<String> = ArrayList<String>()
+        arrayList.add(img)
+        list.addAll(arrayList)
     }
 }
 
