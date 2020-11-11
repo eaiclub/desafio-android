@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000e1f"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:contentDescription="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="362dp"
+        app:srcCompat="@drawable/op2"
+        tools:layout_editor_absoluteX="-11dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="413dp"
+        android:layout_height="681dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:background="#002747"
+        app:cardBackgroundColor="#002747"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5">
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal|top"
+            android:paddingTop="10dp"
+            android:text="CLIQUE PARA INICIAR"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="184dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/start"
+            app:srcCompat="@drawable/nasa_worm_logo_png_nasa_worm_logo_white" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
