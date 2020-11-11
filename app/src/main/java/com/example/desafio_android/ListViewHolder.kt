@@ -24,14 +24,7 @@ class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val link2 = "https://portalpopline.com.br/wp-content/uploads/2020/09/Britney-Spears-1.jpg"
         println("LINK "+link)
         println("LINK 2 "+link2)
-//        try {
-//            val bitmap = BitmapFactory.decodeStream(URL(link2).content as InputStream)
-//            image.setImageBitmap(bitmap)
-//        } catch (e: Exception) {
-//            println("ERRO "+e)
-//        }
         Picasso.get().load(link2).into(image)
-        title.text = "Number: $link2"
-        //image.setImageBitmap(mIcon11)
+        //title.text = "Number: $link2"
     }
 }

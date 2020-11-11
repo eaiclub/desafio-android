@@ -12,10 +12,16 @@ class ItemDiffCallback : DiffUtil.ItemCallback<String>() {
 //        return oldItem == newItem
 //    }
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
+        //return oldItem == newItem
+        println("oldItem "+oldItem)
+        println("newItem "+newItem)
+        return oldItem.equals(newItem)
     }
 
     override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
+        //return oldItem == newItem
+        println("oldItem "+oldItem)
+        println("newItem "+newItem)
+        return oldItem.equals(newItem)
     }
 }

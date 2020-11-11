@@ -21,7 +21,7 @@ import retrofit2.create
 import java.lang.Exception
 import java.util.stream.IntStream.range
 
-const val BASE_URL = "https://api.nasa.gov/"
+const val BASE_URL = "https://api.nasa.gov"
 
 class ListActivity : AppCompatActivity() {
     //private var list: MutableList<Int> = mutableListOf()
@@ -74,7 +74,7 @@ class ListActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
             println("ENTREI NO GLOBAL SCOPE")
             try {
-                val response = api.getPlanetary().awaitResponse()
+                val response = api.getPlanetary("DEMO_KEY", "2020-11-10").awaitResponse()
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data != null) {
