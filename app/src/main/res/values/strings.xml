@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Astronomy Pictures of the Days</string>
+    <string name="apod_description">Astronomy Picture of the Day</string>
+    <string name="astronomy_picture_of_the_day">Picture of the Day</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="picture_zoom">Picture zoom</string>
+</resources>
