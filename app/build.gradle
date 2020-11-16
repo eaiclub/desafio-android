@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.lucasdonato.myapplication"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += 'src/main/java'
+            // List and include all res-* folders
+            file('src/main/').listFiles().each {
+                if (it.isDirectory() && it.name.contains('res')) {
+                    res.srcDirs += it.path
+                }
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$ktxCore"
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.constraintlayout:constraintlayout:$constrait"
+
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation "com.google.code.gson:gson:$gson"
+
+    // Koin for Android
+    implementation "org.koin:koin-android:$koin"
+
+    // Glide (Image loader)
+    implementation "com.github.bumptech.glide:glide:$glide"
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
+    // OkHttp, Retrofit and GSON
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitConverterGson"
+    implementation("com.squareup.retrofit2:retrofit:$retrofit") {
+        // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
+        exclude module: 'okhttp'
+    }
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //Test
+    testImplementation "junit:junit:$jUnit"
+    androidTestImplementation "androidx.test.ext:junit:$jUnitExt"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+
+
+}
