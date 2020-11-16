@@ -10,4 +10,11 @@
     <color name="black_translucent">#80000000</color>
     <color name="black_80">#CC000000</color>
 
+    <color name="wet_asphalt">#34495e</color>
+    <color name="torea_bay">#0B3D91</color>
+
+    <color name="navy_blue">#003366</color>
+
+    <color name="red_orange">#FC3D21</color>
+
 </resources>

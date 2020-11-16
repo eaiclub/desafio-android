@@ -1,4 +1,4 @@
-package com.lucasdonato.nasa
+package com.lucasdonato.nasa.presentation
 
 import android.content.Context
 import androidx.multidex.MultiDex

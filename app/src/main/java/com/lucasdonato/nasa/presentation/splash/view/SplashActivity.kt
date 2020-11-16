@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.View
 import com.lucasdonato.nasa.R
 import com.lucasdonato.nasa.presentation.home.view.HomeActivity
+import com.lucasdonato.nasa.presentation.onboarding.view.OnboardingActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
             override fun onAnimationStart(animator: Animator) {}
 
             override fun onAnimationEnd(animator: Animator) {
-                startHome()
+                startWelcomeScreen()
             }
 
             override fun onAnimationCancel(animator: Animator) {}
@@ -31,8 +32,8 @@ class SplashActivity : AppCompatActivity() {
         })
     }
 
-    private fun startHome() {
-        startActivity(HomeActivity.getStartIntent(this))
+    private fun startWelcomeScreen() {
+        startActivity(OnboardingActivity.getStartIntent(this))
         finish()
     }
 }

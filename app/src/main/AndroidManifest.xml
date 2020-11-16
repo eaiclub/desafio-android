@@ -3,12 +3,13 @@
     package="com.lucasdonato.nasa">
 
     <application
+        android:name=".presentation.AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.Base">
 
         <activity android:name=".presentation.splash.view.SplashActivity">
             <intent-filter>
@@ -21,6 +22,12 @@
         <activity
             android:name=".presentation.home.view.HomeActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.onboarding.view.OnboardingActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Onboarding"
             android:screenOrientation="portrait" />
 
     </application>
