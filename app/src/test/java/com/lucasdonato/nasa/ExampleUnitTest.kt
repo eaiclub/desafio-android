@@ -1,4 +1,4 @@
-package com.lucasdonato.myapplication
+package com.lucasdonato.nasa
 
 import org.junit.Test
 

@@ -39,10 +39,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$ktxCore"
     implementation "androidx.appcompat:appcompat:$appCompat"
     implementation "androidx.constraintlayout:constraintlayout:$constrait"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
 
     implementation "com.squareup.okhttp3:okhttp:$okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
@@ -64,6 +66,9 @@ dependencies {
         exclude module: 'okhttp'
     }
 
+    //MultiDex
+    implementation "androidx.multidex:multidex:$multidexVersion"
+
     //Lottie
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
@@ -71,6 +76,5 @@ dependencies {
     testImplementation "junit:junit:$jUnit"
     androidTestImplementation "androidx.test.ext:junit:$jUnitExt"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
-
 
 }

@@ -28,6 +28,8 @@ ext {
     appCompat = "1.2.0"
     constrait = "2.0.4"
     coroutinesVersion = "1.0.1"
+    recyclerView = "1.1.0"
+    multidexVersion = "2.0.1"
 
     //Test
     jUnit = "4.12"

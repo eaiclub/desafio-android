@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  MARGIN SIZE  -->
+    <dimen name="match_constraints">0dp</dimen>
+    <dimen name="minor_margin">6dp</dimen>
+    <dimen name="small_margin">12dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+
+    <!--Guide line-->
+    <dimen name="guide_line_default">30dp</dimen>
+
+    <!--Toolbar-->
+    <dimen name="toolbar_default_size">60dp</dimen>
+
+    <!--Separation view-->
+    <dimen name="separation_view_small">1dp</dimen>
+
+    <!--  TEXT SIZE  -->
+    <dimen name="x_onboarding_size">26sp</dimen>
+    <dimen name="x_title_size">18sp</dimen>
+    <dimen name="x_large_size">15sp</dimen>
+    <dimen name="x_small_size">12sp</dimen>
+
+    <!--Loader-->
+    <dimen name="loader">200dp</dimen>
+
+</resources>
