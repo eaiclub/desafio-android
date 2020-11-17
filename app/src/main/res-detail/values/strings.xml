@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="mock_title">Lorem Ipsum</string>
+    <string name="mock_date">13/09/1992</string>
+    <string name="mock_message">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </string>
+
+</resources>

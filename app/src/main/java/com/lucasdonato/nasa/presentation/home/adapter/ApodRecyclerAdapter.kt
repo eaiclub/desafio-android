@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -44,7 +45,6 @@ class ApodRecyclerAdapter : BaseRecyclerAdapter<Apod, ApodRecyclerAdapter.ViewHo
 
                 }
 
-
                 apod.url.let { photoUrl ->
                     Glide.with(context).load(photoUrl)
                         .listener(object : RequestListener<Drawable> {
@@ -67,6 +67,9 @@ class ApodRecyclerAdapter : BaseRecyclerAdapter<Apod, ApodRecyclerAdapter.ViewHo
                             }
                         }).into(image_apod)
                 }
+
+                container.background =
+                    ContextCompat.getDrawable(context, R.drawable.shape_imagem_apod_card)
             }
         }
 

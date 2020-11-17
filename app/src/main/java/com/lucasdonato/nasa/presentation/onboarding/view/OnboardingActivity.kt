@@ -7,6 +7,8 @@ import android.os.Bundle
 import com.lucasdonato.nasa.R
 import com.lucasdonato.nasa.presentation.home.view.HomeActivity
 import kotlinx.android.synthetic.main.activity_onboarding.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class OnboardingActivity : AppCompatActivity() {
 

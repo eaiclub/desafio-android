@@ -5,18 +5,17 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/minor_margin"
     android:background="@drawable/shape_imagem_apod_card"
     android:elevation="@dimen/default_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image_apod"
+            android:id="@+id/image_apod_description"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/card_apod"
+            android:layout_height="@dimen/card_detail_image"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,30 +23,38 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@drawable/ic_astronaut_empty" />
 
-        <TextView
-            android:id="@+id/copyright"
-            android:layout_width="@dimen/match_constraints"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/small_margin"
-            android:gravity="end"
-            android:textColor="@color/white"
-            android:layout_marginBottom="@dimen/minor_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Copyright" />
-
         <ProgressBar
             android:id="@+id/image_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:indeterminateTint="@color/black"
+            android:indeterminateTint="@color/white"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/image_apod"
+            app:layout_constraintStart_toStartOf="@+id/image_apod_description"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date_description"
+            android:layout_width="@dimen/match_constraints"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:background="@color/black"
+            android:padding="@dimen/minor_margin"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/mock_date" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="@+id/image_apod_description"
+            app:layout_constraintTop_toTopOf="@+id/image_apod_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

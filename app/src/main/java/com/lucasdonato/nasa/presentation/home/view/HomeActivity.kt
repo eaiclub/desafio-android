@@ -2,14 +2,17 @@ package com.lucasdonato.nasa.presentation.home.view
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.LinearLayout.VERTICAL
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucasdonato.nasa.R
 import com.lucasdonato.nasa.mechanism.extensions.toast
 import com.lucasdonato.nasa.mechanism.livedata.Status
+import com.lucasdonato.nasa.presentation.detail.view.DetailActivity
 import com.lucasdonato.nasa.presentation.home.adapter.ApodRecyclerAdapter
 import com.lucasdonato.nasa.presentation.home.presenter.HomePresenter
 import kotlinx.android.synthetic.main.activity_home.*
@@ -17,6 +20,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -34,13 +38,35 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         setupObserver()
         setupRecyclerView()
-        presenter.getList("2020-11-15", "2020-11-16")
+        catchRangeDate()
     }
 
     private fun setupRecyclerView() {
-        apod_recycler.apply {
-            adapter = adapterApod
-            isFocusable = false
+        LinearLayoutManager(this).let {
+            apod_recycler.apply {
+                adapter = adapterApod
+                isFocusable = false
+                it.reverseLayout = true
+                it.stackFromEnd = true
+                layoutManager = it
+                adapterApod.onItemClickListener = {
+                    startActivity(DetailActivity.getStartIntent(context, it))
+                }
+            }
+        }
+    }
+
+    private fun catchRangeDate() {
+        val finalData: Calendar? = null
+        val endDate = finalData?.apply {
+            this.add(Calendar.DATE, -1)
+        } ?: Calendar.getInstance()
+        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).let {
+            val endRange = it.format(endDate.time)
+            val startRange = it.format(endDate.apply {
+                this.add(Calendar.DATE, -20)
+            }.time)
+            presenter.getList(startRange, endRange)
         }
     }
 

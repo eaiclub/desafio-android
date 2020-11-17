@@ -21,8 +21,8 @@
     <!--  TEXT SIZE  -->
     <dimen name="x_onboarding_size">26sp</dimen>
     <dimen name="x_title_size">18sp</dimen>
-    <dimen name="x_large_size">15sp</dimen>
-    <dimen name="x_small_size">12sp</dimen>
+    <dimen name="x_large_size">16sp</dimen>
+    <dimen name="x_small_size">14sp</dimen>
 
     <!--Loader-->
     <dimen name="loader">200dp</dimen>
@@ -32,5 +32,8 @@
 
     <!--Nasa logo -->
     <dimen name="logo_nasa_home">120dp</dimen>
+
+    <!--Card Recycler Apod-->
+    <dimen name="card_detail_image">300dp</dimen>
 
 </resources>

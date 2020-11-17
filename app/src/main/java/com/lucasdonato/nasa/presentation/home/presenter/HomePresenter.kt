@@ -13,9 +13,9 @@ class HomePresenter(
 
     val getListLiveData = MutableLiveDataResource<List<Apod>>()
 
-    fun getList(start_date: String, end_date: String) = runCoroutine {
+    fun getList(startDate: String, endDate: String) = runCoroutine {
         getListLiveData.postValue(Resource.loading())
-        apodUseCase.getData(start_date, end_date)?.let {
+        apodUseCase.getData(startDate, endDate)?.let {
             getListLiveData.postValue(Resource.success(it))
         } ?: getListLiveData.postValue(Resource.error())
     } onError {
