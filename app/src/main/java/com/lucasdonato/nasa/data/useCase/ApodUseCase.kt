@@ -7,7 +7,7 @@ import com.lucasdonato.nasa.domain.base.runSuspend
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class ApodUseCase(private val context: Context, private val apodRepository: ApodRepository) {
+class ApodUseCase(private val apodRepository: ApodRepository) {
 
     suspend fun getData(start_date: String, end_date: String) = withContext(Dispatchers.IO) {
         runSuspend {
