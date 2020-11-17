@@ -38,11 +38,11 @@ class ApodRecyclerAdapter : BaseRecyclerAdapter<Apod, ApodRecyclerAdapter.ViewHo
                 container.setOnClickListener {
                     onItemClickListener?.invoke(apod)
                 }
+
                 apod.copyright.let {
                     if (it.isNullOrEmpty()) itemView.copyright.text =
                         context.getString(R.string.without_copyright)
                     else itemView.copyright.text = apod.copyright
-
                 }
 
                 apod.url.let { photoUrl ->

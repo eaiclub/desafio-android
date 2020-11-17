@@ -74,7 +74,7 @@
         style="@style/button_default_blue"
         android:layout_width="@dimen/match_constraints"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/ultra_margin"
         android:text="@string/button_start_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"

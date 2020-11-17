@@ -16,6 +16,7 @@ import com.lucasdonato.nasa.presentation.detail.view.DetailActivity
 import com.lucasdonato.nasa.presentation.home.adapter.ApodRecyclerAdapter
 import com.lucasdonato.nasa.presentation.home.presenter.HomePresenter
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.include_empty_state.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.text.SimpleDateFormat
@@ -53,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
             addOnScrollListener(object :
                 PaginationListener(layoutManager as LinearLayoutManager, daysAgo) {
                 override fun loadMoreItems() {
-                    daysAgo += 10
+                    daysAgo += 30
                     catchRangeDate()
                 }
 
@@ -87,6 +88,7 @@ class HomeActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     loader.visibility = GONE
                     it.data?.let {
+                        showRecyclerBack()
                         adapterApod.data = it.toMutableList().asReversed()
                     }
                 }
@@ -97,9 +99,20 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
+    private fun showRecyclerBack() {
+        empty_state.visibility = GONE
+        apod_recycler.visibility = VISIBLE
+    }
+
     private fun setupErrorToast() {
         loader.visibility = GONE
-        toast(getString(R.string.error_toast_request))
+
+        empty_state.visibility = VISIBLE
+        apod_recycler.visibility = GONE
+
+        try_again.setOnClickListener {
+            catchRangeDate()
+        }
     }
 
 }

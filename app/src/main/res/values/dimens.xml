@@ -6,6 +6,7 @@
     <dimen name="minor_margin">6dp</dimen>
     <dimen name="small_margin">12dp</dimen>
     <dimen name="default_margin">16dp</dimen>
+    <dimen name="ultra_margin">26dp</dimen>
 
     <!--Guide line-->
     <dimen name="guide_line_default">30dp</dimen>
