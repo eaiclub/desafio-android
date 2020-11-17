@@ -4,7 +4,6 @@ import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.lucasdonato.nasa.BuildConfig
-import com.lucasdonato.nasa.data.remote.model.WebService
 import com.lucasdonato.nasa.mechanism.APPLICATION_JSON
 import com.lucasdonato.nasa.mechanism.CONTENT_TYPE
 import okhttp3.Interceptor

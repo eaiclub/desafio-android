@@ -2,8 +2,7 @@
 
     <string name="app_name">Nasa API</string>
 
-    <string name="api_link">https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY</string>
-
+    <string name="over_rate_limit">Você excedeu seu limite de taxa. Tente mais tarde.</string>
     <string name="error_generic">Ocorreu um problema, tente novamente.</string>
     <string name="try_again"><b><u>Tentar novamente</u></b></string>
     <string name="alert_internet_unavailable_message">Não foi possível estabelecer conexão com a Internet, verifique sua conexão e tente novamente!</string>

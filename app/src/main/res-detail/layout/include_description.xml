@@ -11,15 +11,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/guide_line_default" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/guide_line_default" />
+
         <TextView
             android:id="@+id/title_description"
             android:layout_width="@dimen/match_constraints"
-            android:textSize="@dimen/x_title_size"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/small_margin"
+            android:textSize="@dimen/x_title_size"
             app:layout_constraintBottom_toTopOf="@+id/message_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/mock_title" />
 
@@ -27,10 +41,10 @@
             android:id="@+id/message_description"
             android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/x_small_size"
             android:layout_margin="@dimen/small_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/x_small_size"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintTop_toBottomOf="@+id/title_description"
             tools:text="@string/mock_message" />
 

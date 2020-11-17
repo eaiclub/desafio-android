@@ -1,4 +1,4 @@
-package com.lucasdonato.nasa.data.remote.model
+package com.lucasdonato.nasa.data.remote
 
 import com.lucasdonato.nasa.data.model.Apod
 import com.lucasdonato.nasa.mechanism.API_KEY
