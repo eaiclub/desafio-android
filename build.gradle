@@ -30,6 +30,7 @@ ext {
     coroutinesVersion = "1.0.1"
     recyclerView = "1.1.0"
     multidexVersion = "2.0.1"
+    cardView = "1.0.0"
 
     //Test
     jUnit = "4.12"
@@ -50,6 +51,9 @@ ext {
 
     //Lottie
     lottieVersion = "3.4.2"
+
+    // Debug
+    stethoVersion = "1.5.1"
 
 }
 

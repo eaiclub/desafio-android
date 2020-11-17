@@ -1,4 +1,4 @@
-package br.com.versa.data
+package com.lucasdonato.nasa.data.repository.type
 
 import java.io.Serializable
 

@@ -10,7 +10,7 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
-    <style name="AppTheme.Onboarding" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Custom" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/navy_blue</item>
     </style>
 

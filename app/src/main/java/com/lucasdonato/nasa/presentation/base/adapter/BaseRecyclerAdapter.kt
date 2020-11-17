@@ -1,4 +1,4 @@
-package com.br.ibvn12.mechanism.base
+package com.lucasdonato.nasa.presentation.base.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

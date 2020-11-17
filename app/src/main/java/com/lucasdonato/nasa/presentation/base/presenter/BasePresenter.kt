@@ -1,11 +1,11 @@
-package br.com.versa.presentation.base.presenter
+package com.lucasdonato.nasa.presentation.base.presenter
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.CallSuper
-import br.com.versa.controller.executor.ExecutorCoroutineScope
-import br.com.versa.controller.executor.getCoroutineScope
+import com.lucasdonato.nasa.controller.executor.ExecutorCoroutineScope
+import com.lucasdonato.nasa.controller.executor.getCoroutineScope
 
 abstract class BasePresenter : ExecutorCoroutineScope by getCoroutineScope() {
 

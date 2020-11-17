@@ -1,28 +1,16 @@
-package com.lucasdonato.nasa.data.repository
+package com.lucasdonato.nasa.data.repository.apod
 
-import android.content.Context
-import android.widget.Toast
 import com.lucasdonato.nasa.data.model.Apod
-import com.lucasdonato.nasa.data.remote.model.Service
-import com.lucasdonato.nasa.data.remote.model.WebService
-import com.lucasdonato.nasa.mechanism.API_KEY
-import com.lucasdonato.nasa.mechanism.network.NetworkUtils
-import com.lucasdonato.nasa.presentation.AppApplication.Companion.context
+import com.lucasdonato.nasa.data.remote.dataSource.ApodDataSource
+import com.lucasdonato.nasa.data.repository.performRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class ApodRepository(context: Context) {
+class ApodRepository(private val apodDataSource: ApodDataSource) {
 
-    suspend fun getApodDate() = withContext(Dispatchers.IO) {
-        try {
-            return@withContext Service.service.getList()
-        } catch (exception: Exception) {
-            val error = exception.message
-            return@withContext error
-        }
+    suspend fun getApodDate(start_date: String, end_date: String) = withContext(Dispatchers.IO) {
+        (performRequest(
+            apodDataSource.getApod(start_date, end_date).execute(), true) as List<Apod>?)
     }
 
 }

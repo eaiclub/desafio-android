@@ -3,6 +3,7 @@ package com.lucasdonato.nasa.presentation
 import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import com.facebook.stetho.Stetho
 import com.lucasdonato.nasa.mechanism.dependencies.applicationModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -17,6 +18,11 @@ class AppApplication : MultiDexApplication() {
         sContext = WeakReference(context)
         setupMultiDex()
         setupKoin()
+        setupStetho()
+    }
+
+    private fun setupStetho() {
+        Stetho.initializeWithDefaults(this)
     }
 
     private fun setupMultiDex() {

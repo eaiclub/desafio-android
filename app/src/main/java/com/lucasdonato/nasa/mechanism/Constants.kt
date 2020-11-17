@@ -1,6 +1,7 @@
 package com.lucasdonato.nasa.mechanism
 
-//Splash
-const val SPLASH_DISPLAY_TIME = 5000
-
+//Api key
+const val API_KEY = "DEMO_KEY"
+const val CONTENT_TYPE = "Content-Type"
+const val APPLICATION_JSON = "application/json"
 

@@ -1,30 +1,28 @@
-package br.com.mypets.presentation.home.presenter
+package com.lucasdonato.nasa.presentation.home.presenter
 
-import android.content.Context
-import android.view.View
-import br.com.mypets.data.local.SessionDataSource
-import br.com.mypets.data.remote.model.Pets
-import br.com.mypets.data.remote.model.User
-import br.com.mypets.data.repository.UserRepository
-import br.com.mypets.mechanism.livedata.MutableLiveDataResource
-import br.com.mypets.mechanism.livedata.Resource
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_home.*
+import com.lucasdonato.nasa.data.model.Apod
+import com.lucasdonato.nasa.data.useCase.ApodUseCase
+import com.lucasdonato.nasa.mechanism.livedata.MutableLiveDataResource
+import com.lucasdonato.nasa.mechanism.livedata.Resource
+import com.lucasdonato.nasa.presentation.AppApplication
+import com.lucasdonato.nasa.presentation.base.presenter.BasePresenter
 
 class HomePresenter(
-    private val context: Context,
-    private val userRepository: UserRepository
-) {
+    private val apodUseCase: ApodUseCase
+) : BasePresenter() {
 
-    fun getMe() = userRepository.getMe()
+    val getListLiveData = MutableLiveDataResource<List<Apod>>()
 
-    fun getCurrentPet() = userRepository.getCurrentPet()
-
-    fun logout() = userRepository.logout()
+    fun getList(start_date: String, end_date: String) = runCoroutine {
+        getListLiveData.postValue(Resource.loading())
+        apodUseCase.getData(start_date, end_date)?.let {
+            getListLiveData.postValue(Resource.success(it))
+        } ?: getListLiveData.postValue(Resource.error())
+    } onError {
+        getListLiveData.postValue(
+            Resource.error(AppApplication.context?.getString(it.errorCode.stringCode))
+        )
+    }
 
 }
 

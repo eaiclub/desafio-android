@@ -12,6 +12,8 @@
 
     <!--Toolbar-->
     <dimen name="toolbar_default_size">60dp</dimen>
+    <dimen name="toolbar_back">22dp</dimen>
+    <dimen name="toolbar_margin">22dp</dimen>
 
     <!--Separation view-->
     <dimen name="separation_view_small">1dp</dimen>
@@ -24,5 +26,11 @@
 
     <!--Loader-->
     <dimen name="loader">200dp</dimen>
+
+    <!--Card Recycler Apod-->
+    <dimen name="card_apod">200dp</dimen>
+
+    <!--Nasa logo -->
+    <dimen name="logo_nasa_home">120dp</dimen>
 
 </resources>

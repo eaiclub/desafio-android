@@ -1,10 +1,9 @@
-package br.com.versa.data.repository
+package com.lucasdonato.nasa.data.repository
 
-import br.com.versa.data.WsError
 import com.google.gson.Gson
+import com.lucasdonato.nasa.data.repository.type.WsError
 import okhttp3.ResponseBody
 import retrofit2.Response
-
 
 fun <T : Any> performRequest(response: Response<T>, verifyBody: Boolean = true): Any {
     try {
@@ -24,10 +23,10 @@ fun <T : Any> performRequest(response: Response<T>, verifyBody: Boolean = true):
             /**
              * Include more cases if needed
              */
-            is MBLabsException -> throw MBLabsException(
+            is ErrosException -> throw ErrosException(
                 e.errorCode
             )
-            else -> throw MBLabsException(ErrorCode.GENERIC_ERROR)
+            else -> throw ErrosException(ErrorCode.GENERIC_ERROR)
         }
     }
 }
@@ -39,7 +38,7 @@ fun treatError(errorBody: ResponseBody? = null) {
          * Each project has it's own error structure, customize method to adapt
          */
         Gson().fromJson(error, WsError::class.java)?.let { wsError ->
-            throw MBLabsException(ErrorCode.fromString(wsError.error))
+            throw ErrosException(ErrorCode.fromString(wsError.error))
         }
-    } ?: throw MBLabsException(ErrorCode.GENERIC_ERROR)
+    } ?: throw ErrosException(ErrorCode.GENERIC_ERROR)
 }

@@ -1,9 +1,8 @@
-package br.com.versa.domain.usecase.base
+package com.lucasdonato.nasa.domain.base
 
 import android.util.Log
-import br.com.versa.data.repository.ErrorCode
-import br.com.versa.data.repository.MBLabsException
-
+import com.lucasdonato.nasa.data.repository.ErrorCode
+import com.lucasdonato.nasa.data.repository.ErrosException
 
 /**
  * Use this method for execute requests WS/DB inside methods on UseCase
@@ -14,8 +13,8 @@ fun <T : Any?> runMethod(block: () -> T): T {
     } catch (e: Exception) {
         Log.e("UseCaseHelper", e.message ?: "")
         when (e) {
-            is MBLabsException -> throw MBLabsException(e.errorCode)
-            else -> throw MBLabsException(ErrorCode.GENERIC_ERROR)
+            is ErrosException -> throw ErrosException(e.errorCode)
+            else -> throw ErrosException(ErrorCode.GENERIC_ERROR)
         }
     }
 }
@@ -26,8 +25,8 @@ suspend fun <T : Any?> runSuspend(run: suspend () -> T): T {
     } catch (e: Exception) {
         Log.e("UseCaseHelper", e.message ?: "")
         when (e) {
-            is MBLabsException -> throw MBLabsException(e.errorCode)
-            else -> throw MBLabsException(ErrorCode.GENERIC_ERROR)
+            is ErrosException -> throw ErrosException(e.errorCode)
+            else -> throw ErrosException(ErrorCode.GENERIC_ERROR)
         }
     }
 }

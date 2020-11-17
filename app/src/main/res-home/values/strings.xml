@@ -1,4 +1,7 @@
 <resources>
 
+    <string name="error_toast_request">Ocorreu um erro na solicitação</string>
+
+    <string name="without_copyright">Livre de direitos</string>
 
 </resources>

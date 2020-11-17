@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -12,14 +13,19 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_URL", '"https://api.nasa.gov/"'
+        buildConfigField "String", "API_KEY", '"DEMO_KEY"'
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "https://api.nasa.gov/"
+            buildConfigField "String", "API_KEY", "DEMO_KEY"
         }
     }
 
@@ -45,6 +51,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appCompat"
     implementation "androidx.constraintlayout:constraintlayout:$constrait"
     implementation "androidx.recyclerview:recyclerview:$recyclerView"
+    implementation "androidx.cardview:cardview:$cardView"
 
     implementation "com.squareup.okhttp3:okhttp:$okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
@@ -76,5 +83,9 @@ dependencies {
     testImplementation "junit:junit:$jUnit"
     androidTestImplementation "androidx.test.ext:junit:$jUnitExt"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+
+    // Stetho
+    implementation "com.facebook.stetho:stetho:$stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 
 }
