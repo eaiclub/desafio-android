@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         ApodRecyclerAdapter()
     }
 
-    private var daysAgo: Int = 10
+    private var daysAgo: Int = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +44,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         apod_recycler.apply {
+            adapter = adapterApod
             isFocusable = false
             adapterApod.onItemClickListener = {
                 startActivity(DetailActivity.getStartIntent(context, it))
             }
-            adapter = adapterApod
+
             addOnScrollListener(object :
                 PaginationListener(layoutManager as LinearLayoutManager, daysAgo) {
                 override fun loadMoreItems() {
@@ -86,7 +87,7 @@ class HomeActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     loader.visibility = GONE
                     it.data?.let {
-                        adapterApod.data = it.toMutableList()
+                        adapterApod.data = it.toMutableList().asReversed()
                     }
                 }
                 Status.ERROR -> setupErrorToast()

@@ -12,7 +12,7 @@
         android:layout_width="@dimen/match_constraints"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/small_margin"
         android:layout_marginEnd="@dimen/default_margin"
         app:layout_constraintBottom_toTopOf="@+id/include_description"
         app:layout_constraintEnd_toEndOf="parent"
