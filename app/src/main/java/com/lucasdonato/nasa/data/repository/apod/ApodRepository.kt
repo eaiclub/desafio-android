@@ -8,9 +8,9 @@ import kotlinx.coroutines.withContext
 
 class ApodRepository(private val apodDataSource: ApodDataSource) {
 
-    suspend fun getApodDate(start_date: String, end_date: String) = withContext(Dispatchers.IO) {
+    suspend fun getApodDate(startDate: String, endDate: String) = withContext(Dispatchers.IO) {
         (performRequest(
-            apodDataSource.getApod(start_date, end_date).execute(), true) as List<Apod>?)
+            apodDataSource.getApod(startDate, endDate).execute(), true) as List<Apod>?)
     }
 
 }

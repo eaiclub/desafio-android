@@ -9,9 +9,9 @@ import kotlinx.coroutines.withContext
 
 class ApodUseCase(private val apodRepository: ApodRepository) {
 
-    suspend fun getData(start_date: String, end_date: String) = withContext(Dispatchers.IO) {
+    suspend fun getData(startDate: String, endDate: String) = withContext(Dispatchers.IO) {
         runSuspend {
-            apodRepository.getApodDate(start_date, end_date)
+            apodRepository.getApodDate(startDate, endDate)
         }
     }
 

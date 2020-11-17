@@ -4,6 +4,6 @@ import com.lucasdonato.nasa.data.remote.WebService
 
 class ApodDataSource (private val webService: WebService){
 
-    fun getApod(start_date: String, end_date: String) = webService.getList(start_date, end_date)
+    fun getApod(startDate: String, endDate: String) = webService.getList(startDate, endDate)
 
 }
