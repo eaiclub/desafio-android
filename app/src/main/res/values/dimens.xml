@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  MARGIN SIZE  -->
+    <dimen name="match_constraints">0dp</dimen>
+    <dimen name="minor_margin">6dp</dimen>
+    <dimen name="small_margin">12dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="ultra_margin">26dp</dimen>
+
+    <!--Guide line-->
+    <dimen name="guide_line_default">30dp</dimen>
+
+    <!--Toolbar-->
+    <dimen name="toolbar_default_size">60dp</dimen>
+    <dimen name="toolbar_back">22dp</dimen>
+    <dimen name="toolbar_margin">22dp</dimen>
+
+    <!--Separation view-->
+    <dimen name="separation_view_small">1dp</dimen>
+
+    <!--  TEXT SIZE  -->
+    <dimen name="x_onboarding_size">26sp</dimen>
+    <dimen name="x_title_size">18sp</dimen>
+    <dimen name="x_large_size">16sp</dimen>
+    <dimen name="x_small_size">14sp</dimen>
+
+    <!--Loader-->
+    <dimen name="loader">200dp</dimen>
+
+    <!--Card Recycler Apod-->
+    <dimen name="card_apod">200dp</dimen>
+
+    <!--Nasa logo -->
+    <dimen name="logo_nasa_home">120dp</dimen>
+
+    <!--Card Recycler Apod-->
+    <dimen name="card_detail_image">300dp</dimen>
+
+</resources>

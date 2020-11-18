@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navy_blue">
+
+    <include
+        android:id="@+id/image_description"
+        layout="@layout/include_card_image_description"
+        android:layout_width="@dimen/match_constraints"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        app:layout_constraintBottom_toTopOf="@+id/include_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        layout="@layout/include_description"
+        android:layout_width="@dimen/match_constraints"
+        android:layout_height="@dimen/match_constraints"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_description"
+        app:layout_goneMarginTop="@dimen/default_margin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

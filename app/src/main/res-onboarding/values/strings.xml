@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="welcome_title">Bem vindo ao APOD da NASA</string>
+    <string name="welcome_message">Esse projeto foi construído utilizando a api de fotografia do dia da NASA, venha conferir como ficou o resultado!</string>
+    <string name="button_start_home">Lançar foguete</string>
+
+</resources>
