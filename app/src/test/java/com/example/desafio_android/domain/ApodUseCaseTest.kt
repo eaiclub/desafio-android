@@ -1,5 +1,11 @@
 package com.example.desafio_android.domain
 
+import com.example.desafio_android.common.domain.models.NasaApod
+import com.example.desafio_android.common.domain.models.NasaApodResponse
+import com.example.desafio_android.common.domain.repository.NasaRepository
+import com.example.desafio_android.common.domain.usecase.ApodUseCase
+import com.example.desafio_android.util.Resource
+import com.example.desafio_android.util.Status
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
