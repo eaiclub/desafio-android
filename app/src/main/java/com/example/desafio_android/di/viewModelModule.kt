@@ -1,5 +1,9 @@
 package com.example.desafio_android.di
 
-import org.koin.core.module.Module
+import com.example.desafio_android.ui.NasaViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-lateinit var viewModelModule: Module
+val viewModelModule = module {
+    viewModel { NasaViewModel(get()) }
+}

@@ -1,5 +1,8 @@
 package com.example.desafio_android.di
 
-import org.koin.core.module.Module
+import com.example.desafio_android.common.domain.usecase.ApodUseCase
+import org.koin.dsl.module
 
-lateinit var useCaseModule: Module
+val useCaseModule = module {
+ factory { ApodUseCase(get())}
+}
