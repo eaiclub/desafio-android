@@ -1,4 +1,4 @@
-package com.example.desafio_android.common
+package com.example.desafio_android.util
 
 enum class Status {
     SUCCESS,

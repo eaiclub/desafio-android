@@ -1,7 +1,7 @@
 package com.example.desafio_android.domain
 
-import com.example.desafio_android.common.Resource
-import com.example.desafio_android.common.ResponseHandler
+import com.example.desafio_android.util.Resource
+import com.example.desafio_android.util.ResponseHandler
 import com.example.desafio_android.common.domain.models.NasaApodResponse
 import com.example.desafio_android.common.domain.repository.NasaRepository
 import com.example.desafio_android.data.remote.provideNasaApi

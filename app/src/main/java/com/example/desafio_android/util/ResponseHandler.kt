@@ -1,4 +1,4 @@
-package com.example.desafio_android.common
+package com.example.desafio_android.util
 
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
@@ -11,7 +11,7 @@ open class ResponseHandler {
     fun <T : Any> handleThrowable(e: Throwable): Resource<T> {
         return when (e) {
             is HttpException -> Resource.error(getErrorMessage(e.code()), null)
-            is SocketTimeoutException -> Resource.error(getErrorMessage(ErrorCodes.SocketTimeOut.code), null)
+            is SocketTimeoutException -> Resource.error(getErrorMessage(SOCKET_TIMEOUT_ERROR_CODE), null)
             else -> Resource.error(getErrorMessage(Int.MAX_VALUE), null)
         }
     }
@@ -24,9 +24,4 @@ open class ResponseHandler {
             else -> "No Internet Dected"
         }
     }
-}
-
-enum class ErrorCodes(val code: Int) {
-    SocketTimeOut(-1),
-    NotFound(404)
 }

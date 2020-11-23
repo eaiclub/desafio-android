@@ -1,6 +1,6 @@
 package com.example.desafio_android.data.remote
 
-import com.example.desafio_android.common.BASE_URL
+import com.example.desafio_android.util.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
