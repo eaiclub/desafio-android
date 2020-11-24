@@ -103,6 +103,18 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation group: 'androidx.lifecycle', name: 'lifecycle-common-java8', version: '2.2.0-alpha04'
 
+    //Timber - Logging
     implementation "com.jakewharton.timber:timber:$project.timberVersion"
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //RecyclerView Animations
+    implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
+
+    //PhotoView
+
+    implementation 'com.github.chrisbanes:PhotoView:2.1.2'
 
 }
