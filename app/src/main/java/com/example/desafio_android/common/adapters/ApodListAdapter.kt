@@ -84,15 +84,15 @@ class ApodListAdapter(apodsList: List<NasaApod>, private val clickListener: IOnC
 
     fun setLoading() {
         if (itemCount == 0 ) {
-            val pokemon = mutableApodsList.first().copy().apply { this.progress = true }
-            mutableApodsList.add(pokemon)
+            val apod = mutableApodsList.first().copy().apply { this.progress = true }
+            mutableApodsList.add(apod)
             notifyItemInserted(itemCount - 1)
             loading = true
         }
     }
 
-    fun addMoreItems(newPokemonList: List<NasaApod>){
-        mutableApodsList.addAll(newPokemonList)
+    fun addMoreItems(apodList: List<NasaApod>){
+        mutableApodsList.addAll(apodList)
         notifyDataSetChanged()
     }
 }

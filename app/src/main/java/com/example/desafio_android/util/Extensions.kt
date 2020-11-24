@@ -2,10 +2,12 @@ package com.example.desafio_android.util
 
 import android.os.Build
 import android.widget.ImageView
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.desafio_android.R
 import com.example.desafio_android.common.domain.models.NasaApod
 import com.example.desafio_android.common.domain.models.NasaApodResponse
 import java.text.SimpleDateFormat
@@ -37,9 +39,14 @@ fun Calendar.toStringDate(): String{
 @BindingAdapter("imageUrl")
 fun ImageView.load(imagemUrl: String?) {
     val imageView = this
-    val url = imagemUrl
-    val requestOptions = Glide.with(imageView.context).load(url).apply(
-        RequestOptions().optionalFitCenter().centerInside().centerCrop()
-    ).transition(DrawableTransitionOptions.withCrossFade(300))
-    requestOptions.into(this)
+    if (imagemUrl.toString().contains(".jpg")){
+        val requestOptions = Glide.with(imageView.context).load(imagemUrl).apply(
+                RequestOptions().optionalFitCenter().centerInside().centerCrop()
+        ).transition(DrawableTransitionOptions.withCrossFade(300))
+        requestOptions.into(this)
+    }else{
+       val image = imageView.context.resources.getDrawable(R.drawable.errorimage)
+        Glide.with(imageView).load(image).into(this)
+    }
+
 }
