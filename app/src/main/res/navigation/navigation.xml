@@ -8,15 +8,21 @@
     <fragment
         android:id="@+id/apodListFragment"
         android:name="com.example.desafio_android.ui.fragments.ApodListFragment"
-        android:label="fragment_apod_list"
+        android:label="Astronomy Picture of the Day Archive"
         tools:layout="@layout/fragment_apod_list" >
         <action
             android:id="@+id/action_apodListFragment_to_apodDisplayFragment"
-            app:destination="@id/apodDisplayFragment" />
+            app:destination="@id/apodDisplayFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/apodDisplayFragment"
         android:name="com.example.desafio_android.ui.fragments.ApodDisplayFragment"
-        android:label="fragment_apod_display"
-        tools:layout="@layout/fragment_apod_display" />
+        android:label="Astronomy Picture of "
+        tools:layout="@layout/fragment_apod_display" >
+        <argument
+            android:name="apod"
+            app:argType="com.example.desafio_android.common.domain.models.NasaApod" />
+    </fragment>
 </navigation>
