@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="nasaApod"
+            type="com.example.desafio_android.common.domain.models.NasaApod" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/row_layout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="16dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="2dp"
+        android:layout_margin="8sp"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:adjustViewBounds="true"
+            bind:imageUrl="@{nasaApod.url}"
+            android:src="@drawable/ic_launcher_background" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/apod_title"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@{nasaApod.title}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginStart="4sp"
+                app:layout_constraintBottom_toTopOf="@id/apod_data"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="4sp" />
+
+            <TextView
+                android:id="@+id/apod_data"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@{nasaApod.date}"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginStart="4sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="4sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
