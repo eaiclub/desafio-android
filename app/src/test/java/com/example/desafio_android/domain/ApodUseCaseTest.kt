@@ -21,8 +21,7 @@ class ApodUseCaseTest {
     val mockedRepo: NasaRepository = mockk()
     val mockedUseCase: ApodUseCase = ApodUseCase(mockedRepo)
 
-    val initialDate = java.util.Calendar.getInstance()
-    val finalDate = java.util.Calendar.getInstance()
+    val offset: Int = 0
 
     private lateinit var mockedResponse: NasaApodResponse
     private lateinit var mockedNasaApod: NasaApod
@@ -58,9 +57,10 @@ class ApodUseCaseTest {
         coEvery { mockedRepo.getApodList(any(), any()) } returns Resource(Status.SUCCESS, listOf(mockedResponse), null)
 
         runBlocking {
-            val response = mockedUseCase.getApodList(initialDate, finalDate)
-            Assert.assertTrue("Tipo incorreto", response?.data is List<NasaApod>)
+            val response = mockedUseCase.getApodList(offset)
+            Assert.assertTrue("Tipo incorreto", response.data is List<NasaApod>)
         }
     }
+
 
 }

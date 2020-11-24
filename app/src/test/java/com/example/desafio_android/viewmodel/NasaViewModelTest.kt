@@ -26,26 +26,24 @@ class NasaViewModelTest {
 
     lateinit var mockedUseCase: ApodUseCase
 
-    val initialDate = Calendar.getInstance()
-    val finalDate = Calendar.getInstance()
+    val offset: Int = 0
 
     @Before
     fun start(){
         mockedUseCase = mockk()
     }
 
-
-
     @Test
     fun test_nasa_view_model_livedata_populates_expected_value() = run {
         mockedNasaViewModel = NasaViewModel(mockedUseCase)
 
-        coEvery { mockedUseCase.getApodList(any(), any()) } returns Resource(Status.SUCCESS, listOf<NasaApod>(mockk()), null)
+        coEvery { mockedUseCase.getApodList(any()) } returns Resource(Status.SUCCESS, listOf<NasaApod>(mockk()), null)
         mockedNasaViewModel.getApodLiveData().observeForever {  }
 
-        runBlocking{  mockedNasaViewModel.loadApodList(initialDate, finalDate) }
+        runBlocking{  mockedNasaViewModel.loadApodList(offset) }
 
         assert( mockedNasaViewModel.getApodLiveData().value != null)
         assert(mockedNasaViewModel.getApodLiveData().value!!.status == Status.SUCCESS)
     }
+
 }
