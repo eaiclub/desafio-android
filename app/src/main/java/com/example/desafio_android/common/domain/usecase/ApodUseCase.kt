@@ -8,6 +8,7 @@ import java.util.*
 class ApodUseCase(private val nasaRepo: NasaRepository) {
 
     suspend fun getApodList(offset: Int): Resource<List<NasaApod>>{
+        //The diff between the offsets is the number of items we want on the response
         val initialOffset = - offset - ITENS_ON_RESPONSE
         val initialDate = getDate(initialOffset)
         val finalDate   = getDate(- offset)

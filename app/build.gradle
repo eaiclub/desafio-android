@@ -113,4 +113,8 @@ dependencies {
     //RecyclerView Animations
     implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
 
+    //PhotoView
+
+    implementation 'com.github.chrisbanes:PhotoView:2.1.2'
+
 }

@@ -1,7 +1,9 @@
 package com.example.desafio_android.ui.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
@@ -9,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bumptech.glide.Glide
 import com.example.desafio_android.R
 import com.example.desafio_android.common.adapters.ApodListAdapter
 import com.example.desafio_android.common.domain.models.NasaApod
@@ -16,6 +19,7 @@ import com.example.desafio_android.databinding.FragmentApodListBinding
 import com.example.desafio_android.ui.NasaViewModel
 import com.example.desafio_android.util.*
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.media_dialog.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -67,8 +71,8 @@ class ApodListFragment : Fragment(), IOnClickListener {
             adapter?.addMoreItems(apodsList)
         } else {
             adapter = ApodListAdapter(apodsList, this)
-            setUpScrollListener(layoutManager)
         }
+        setUpScrollListener(layoutManager)
         binding?.apodListRecycler?.adapter = adapter
     }
 
@@ -84,10 +88,17 @@ class ApodListFragment : Fragment(), IOnClickListener {
     }
 
     override fun onClick(apod: NasaApod) {
-        val navigateToApodDetails =  ApodListFragmentDirections.actionApodListFragmentToApodDisplayFragment(apod)
-        findNavController().navigate(navigateToApodDetails)
+//        val navigateToApodDisplay =  ApodListFragmentDirections.actionApodListFragmentToApodDisplayFragment(apod)
+//        findNavController().navigate(navigateToApodDisplay)
+        displayHdImage(apod)
     }
-
+    private fun displayHdImage(apod: NasaApod){
+        val dialog = Dialog(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+        dialog.setContentView(R.layout.media_dialog)
+        val imageView = dialog.findViewById<ImageView>(R.id.apod_media)
+        Glide.with(requireContext()).load(apod.url).into(imageView)
+        dialog.show()
+    }
     private fun showDialog(header: String, body: String) {
         val builder: AlertDialog.Builder = AlertDialog.Builder(context!!)
         builder.setTitle(header)
