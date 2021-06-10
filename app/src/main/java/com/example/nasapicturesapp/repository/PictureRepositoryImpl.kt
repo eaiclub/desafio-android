@@ -13,4 +13,8 @@ class PictureRepositoryImpl @Inject constructor(
     override suspend fun getPictures(startDate: String, endDate: String): List<PictureModel> {
         return webService.getApod(Constants.Api.demoKey, startDate, endDate).toModel()
     }
+
+    override suspend fun getPicture(date: String): PictureModel {
+        return webService.getPicture(Constants.Api.demoKey, date).toModel()
+    }
 }
