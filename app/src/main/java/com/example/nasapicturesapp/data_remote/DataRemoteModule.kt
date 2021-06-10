@@ -1,5 +1,6 @@
 package com.example.nasapicturesapp.data_remote
 
+import com.example.nasapicturesapp.data_remote.Constants.Api.baseApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -14,14 +15,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 @InstallIn(SingletonComponent::class)
 object DataRemoteModule {
-    private const val baseUrl = "https://api.nasa.gov/planetary/"
 
     @Provides
     fun provideApiService(
         client: OkHttpClient,
         gson: Gson
     ): WebService {
-        return Retrofit.Builder().baseUrl(baseUrl)
+        return Retrofit.Builder().baseUrl(baseApi)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
