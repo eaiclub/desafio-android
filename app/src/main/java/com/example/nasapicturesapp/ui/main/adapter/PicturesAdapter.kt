@@ -9,23 +9,29 @@ import com.example.nasapicturesapp.databinding.ItemPictureBinding
 import com.example.nasapicturesapp.domain.model.PictureModel
 import com.example.nasapicturesapp.util.loadUrl
 
-class PicturesAdapter :
+class PicturesAdapter(private val onClick: (char: PictureModel) -> Unit) :
     PagingDataAdapter<PictureModel, PicturesAdapter.PictureViewHolder>(CharacterComparator) {
 
     class PictureViewHolder(private val binding: ItemPictureBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         //TODO: make a beautiful layout
-        fun bindPicture(item: PictureModel?) {
-            binding.pictureImageView.loadUrl(item?.url.orEmpty())
+        fun bindPicture(
+            item: PictureModel,
+            onClick: (char: PictureModel) -> Unit
+        ) {
+            binding.pictureImageView.loadUrl(item.url.orEmpty())
             binding.apply {
-                pictureTitle.text = item?.title ?: "UNKOWN"
+                pictureTitle.text = item.title
+                root.setOnClickListener {
+                    onClick(item)
+                }
             }
         }
     }
 
     override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
-        holder.bindPicture(getItem(position))
+        getItem(position)?.let { holder.bindPicture(it, onClick) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PictureViewHolder {

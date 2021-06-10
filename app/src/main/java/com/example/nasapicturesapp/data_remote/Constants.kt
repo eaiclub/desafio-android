@@ -11,5 +11,6 @@ class Constants {
         const val apiKey = "api_key"
         const val startDate = "start_date"
         const val endDate = "end_date"
+        const val date = "date"
     }
 }
