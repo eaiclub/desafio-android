@@ -30,8 +30,9 @@ class PictureDetailFragment : Fragment() {
         viewModel.initViewModel(arguments?.getSerializable("date") as String)
         viewModel.picture.observe(viewLifecycleOwner, { picture ->
             binding.pictureTitle.text = picture.title
-            binding.pictureTitle2.text = picture.explanation
+            binding.pictureDescription.text = picture.explanation
             binding.pictureZoomable.loadUrl(picture.url)
+            binding.pictureDate.text = picture.date
         })
     }
 }
