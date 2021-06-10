@@ -11,5 +11,11 @@ interface WebService {
         @Query(Constants.Query.startDate) startDate: String,
         @Query(Constants.Query.endDate) endDate: String
     ) : List<PictureResponse>
+
+    @GET(Constants.Api.apod)
+    suspend fun getPicture(
+        @Query(Constants.Query.apiKey) apiKey: String,
+        @Query(Constants.Query.date) date: String
+    ) : PictureResponse
 }
 

@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.nasapicturesapp.R
 import com.example.nasapicturesapp.databinding.MainFragmentBinding
 import com.example.nasapicturesapp.ui.main.adapter.PicturesAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,10 +24,6 @@ class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var picturesAdapter: PicturesAdapter
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +35,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        picturesAdapter = PicturesAdapter()
+        picturesAdapter = PicturesAdapter {
+            val bundle = bundleOf("date" to it.date)
+            findNavController().navigate(R.id.action_mainFragment_to_pictureDetailFragment, bundle)
+        }
 
         binding.picturesList.apply {
             layoutManager = LinearLayoutManager(context)
