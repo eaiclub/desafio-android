@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.nasapicturesapp.databinding.FragmentPictureDetailBinding
 import com.example.nasapicturesapp.util.loadUrl
+import com.example.nasapicturesapp.util.toUserFriendlyDate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +33,7 @@ class PictureDetailFragment : Fragment() {
             binding.pictureTitle.text = picture.title
             binding.pictureDescription.text = picture.explanation
             binding.pictureZoomable.loadUrl(picture.url)
-            binding.pictureDate.text = picture.date
+            binding.pictureDate.text = picture.date.toUserFriendlyDate()
         })
     }
 }
