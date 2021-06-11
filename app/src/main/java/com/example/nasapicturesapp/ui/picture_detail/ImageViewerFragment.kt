@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.nasapicturesapp.R
 import com.example.nasapicturesapp.databinding.FragmentImageViewerBinding
 import com.example.nasapicturesapp.util.loadUrl
@@ -22,6 +23,7 @@ class ImageViewerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val url = arguments?.getSerializable("url") as String?
         if(url.isNullOrEmpty()) {
             binding.picturePhotoView.setImageResource(R.drawable.ic_round_image_24)
