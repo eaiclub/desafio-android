@@ -3,6 +3,7 @@ package com.example.nasapicturesapp.ui.main.pagination
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.nasapicturesapp.domain.model.PictureModel
+import com.example.nasapicturesapp.domain.model.PictureModel.Companion.imageType
 import com.example.nasapicturesapp.domain.repository.PictureRepository
 import com.example.nasapicturesapp.ui.main.pagination.PageInfo.Companion.perPage
 import com.example.nasapicturesapp.util.DateUtil
@@ -19,7 +20,10 @@ class PicturesPagingSource @Inject constructor(private val pictureRepository: Pi
             val today = DateUtil.getToday()
             val startDate = params.key?.startDate ?: today.previewDays(perPage)
             val endDate = params.key?.endDate ?: today
-            val response = pictureRepository.getPictures(startDate, endDate)
+            // The videos won't be showed because their links are from youtube
+            val response = pictureRepository.getPictures(startDate, endDate).filter {
+                it.mediaType == imageType
+            }
             LoadResult.Page(
                 data = response,
                 prevKey = if(endDate.hasNextDay()) PageInfo(startDate.nextDays(perPage), endDate.nextDays(perPage)) else null,

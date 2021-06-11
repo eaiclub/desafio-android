@@ -1,5 +1,7 @@
 package com.example.nasapicturesapp.ui.main.adapter
 
+import android.animation.ValueAnimator
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -12,21 +14,36 @@ import com.example.nasapicturesapp.util.loadUrl
 class PicturesAdapter(private val onClick: (char: PictureModel) -> Unit) :
     PagingDataAdapter<PictureModel, PicturesAdapter.PictureViewHolder>(CharacterComparator) {
 
+    override fun onViewAttachedToWindow(holder: PictureViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        holder.animateCard()
+    }
+
     class PictureViewHolder(private val binding: ItemPictureBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        //TODO: make a beautiful layout
         fun bindPicture(
             item: PictureModel,
             onClick: (char: PictureModel) -> Unit
         ) {
-            binding.pictureImageView.loadUrl(item.url.orEmpty())
             binding.apply {
                 pictureTitle.text = item.title
                 root.setOnClickListener {
                     onClick(item)
                 }
+                binding.pictureImageView.loadUrl(item.url)
             }
+        }
+
+        fun animateCard() {
+            val width = Resources.getSystem().displayMetrics.widthPixels
+            val slideAnimator = ValueAnimator.ofInt(binding.pictureImageView.width, width)
+                .setDuration(400)
+            slideAnimator.addUpdateListener {
+                binding.pictureImageView.layoutParams.width = it.animatedValue as Int
+                binding.pictureImageView.requestLayout()
+            }
+            slideAnimator.start()
         }
     }
 
