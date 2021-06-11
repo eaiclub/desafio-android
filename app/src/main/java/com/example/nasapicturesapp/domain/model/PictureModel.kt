@@ -8,4 +8,8 @@ data class PictureModel(
     val mediaType: String,
     val title: String,
     val url: String
-)
+) {
+    companion object {
+        const val imageType = "image"
+    }
+}

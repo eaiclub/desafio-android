@@ -20,6 +20,11 @@ class PictureDetailFragment : Fragment() {
 
     private val viewModel: PictureDetailViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.initViewModel(arguments?.getSerializable("date") as String)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +36,6 @@ class PictureDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.initViewModel(arguments?.getSerializable("date") as String)
         viewModel.picture.observe(viewLifecycleOwner, { picture ->
             binding.pictureTitle.text = picture.title
             binding.pictureDescription.text = picture.explanation
