@@ -2,8 +2,10 @@ package com.example.nasapicturesapp.ui.picture_detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -36,6 +38,7 @@ class PictureDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         viewModel.picture.observe(viewLifecycleOwner, { picture ->
             binding.pictureTitle.text = picture.title
             binding.pictureDescription.text = picture.explanation
