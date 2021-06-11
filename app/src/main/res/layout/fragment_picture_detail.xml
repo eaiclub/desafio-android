@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.github.chrisbanes.photoview.PhotoView
-            android:id="@+id/picture_zoomable"
+        <ImageView
+            android:id="@+id/picture_image_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
             android:layout_margin="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/picture_zoomable" />
+            app:layout_constraintTop_toBottomOf="@id/picture_image_view" />
 
         <TextView
             android:id="@+id/picture_description"
