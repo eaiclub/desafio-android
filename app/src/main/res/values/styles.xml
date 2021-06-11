@@ -15,9 +15,9 @@
         <item name="android:textColor">@color/dark_grey</item>
     </style>
 
-    <style name="date_text_dark_grey">
+    <style name="date_text_grey">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textColor">@color/grey</item>
         <item name="android:textStyle">italic</item>
     </style>
 

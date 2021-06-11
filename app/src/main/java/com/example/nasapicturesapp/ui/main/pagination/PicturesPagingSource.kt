@@ -4,8 +4,11 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.nasapicturesapp.domain.model.PictureModel
 import com.example.nasapicturesapp.domain.repository.PictureRepository
-import com.example.nasapicturesapp.util.lessTenDays
-import com.example.nasapicturesapp.util.moreTenDays
+import com.example.nasapicturesapp.ui.main.pagination.PageInfo.Companion.perPage
+import com.example.nasapicturesapp.util.DateUtil
+import com.example.nasapicturesapp.util.hasNextDay
+import com.example.nasapicturesapp.util.nextDays
+import com.example.nasapicturesapp.util.previewDays
 import javax.inject.Inject
 
 class PicturesPagingSource @Inject constructor(private val pictureRepository: PictureRepository) :
@@ -13,13 +16,14 @@ class PicturesPagingSource @Inject constructor(private val pictureRepository: Pi
 
     override suspend fun load(params: LoadParams<PageInfo>): LoadResult<PageInfo, PictureModel> {
         return try {
-            val startDate = params.key?.startDate ?: "2021-06-05"
-            val endDate = params.key?.endDate ?: "2021-06-09"
+            val today = DateUtil.getToday()
+            val startDate = params.key?.startDate ?: today.previewDays(perPage)
+            val endDate = params.key?.endDate ?: today
             val response = pictureRepository.getPictures(startDate, endDate)
             LoadResult.Page(
                 data = response,
-                prevKey = PageInfo(startDate.moreTenDays(), endDate.moreTenDays()),
-                nextKey = PageInfo(startDate.lessTenDays(), endDate.lessTenDays())
+                prevKey = if(endDate.hasNextDay()) PageInfo(startDate.nextDays(perPage), endDate.nextDays(perPage)) else null,
+                nextKey = PageInfo(startDate.previewDays(perPage), endDate.previewDays(perPage))
             )
         } catch (e: Exception) {
             LoadResult.Error(e)

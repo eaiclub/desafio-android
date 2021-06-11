@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/picture_date"
-            style="@style/date_text_dark_grey"
+            style="@style/date_text_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
