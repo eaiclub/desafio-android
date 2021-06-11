@@ -21,10 +21,26 @@
     <fragment
         android:id="@+id/pictureDetailFragment"
         android:name="com.example.nasapicturesapp.ui.picture_detail.PictureDetailFragment"
-        android:label="fragment_picture_detail"
+        android:label=""
         tools:layout="@layout/fragment_picture_detail" >
         <argument
             android:name="date"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pictureDetailFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/imageViewerFragment"
+        android:name="com.example.nasapicturesapp.ui.picture_detail.ImageViewerFragment"
+        android:label=""
+        tools:layout="@layout/fragment_image_viewer" >
+        <argument
+            android:name="url"
             app:argType="string" />
     </fragment>
 </navigation>
