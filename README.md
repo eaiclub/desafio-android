@@ -16,7 +16,14 @@ O desafio é criar um aplicativo para mostrar as fotos de um dos conteúdos mais
 |api_key	|string		|DEMO_KEY	|api.nasa.gov key for expanded usage			|
 
 -   **Ref. conteúdo**: [https://apod.nasa.gov/apod/](https://apod.nasa.gov/apod/ "https://apod.nasa.gov/apod/")
--   
+
+-   Linguagem primaria Kotlin
+-   Projeto usando arquitetura MVP 
+-   Kotlin Coroutines 
+-   Koin para injeção de dependecias 
+-   Lottie para aniamações
+-   LiveData 
+
 ![onboarding_nasa (1)](https://user-images.githubusercontent.com/47648982/129750716-1caf0bd6-4af5-4f80-81a7-80b518708537.jpg)
 
 Exemplo da tela de boas vindas. 
