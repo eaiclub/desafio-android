@@ -20,8 +20,8 @@ O desafio é criar um aplicativo para mostrar as fotos de um dos conteúdos mais
 -   Linguagem primaria Kotlin
 -   Projeto usando arquitetura MVP 
 -   Kotlin Coroutines 
--   Koin para injeção de dependecias 
--   Lottie para aniamações
+-   Koin para injeção de dependências 
+-   Lottie para animações
 -   LiveData 
 
 ![onboarding_nasa (1)](https://user-images.githubusercontent.com/47648982/129750716-1caf0bd6-4af5-4f80-81a7-80b518708537.jpg)
