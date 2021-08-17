@@ -16,4 +16,18 @@ O desafio é criar um aplicativo para mostrar as fotos de um dos conteúdos mais
 |api_key	|string		|DEMO_KEY	|api.nasa.gov key for expanded usage			|
 
 -   **Ref. conteúdo**: [https://apod.nasa.gov/apod/](https://apod.nasa.gov/apod/ "https://apod.nasa.gov/apod/")
+-   
+![onboarding_nasa (1)](https://user-images.githubusercontent.com/47648982/129750716-1caf0bd6-4af5-4f80-81a7-80b518708537.jpg)
+
+Exemplo da tela de boas vindas. 
+
+![nasa_home (1)](https://user-images.githubusercontent.com/47648982/129750757-63278e60-f77b-46f0-9510-e23cfd9b02f8.jpg)
+
+Exemplo da tela home do aplicativo. 
+
+![nasa_detatails (1)](https://user-images.githubusercontent.com/47648982/129750821-cf09c6ee-95dd-47f2-ac66-d0bfaf408e7e.jpg)
+
+Assim que clicado em uma imagem abre uma pagina de detalhes com a descrição da foto. 
+
+
 
