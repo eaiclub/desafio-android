@@ -17,57 +17,24 @@ O desafio é criar um aplicativo para mostrar as fotos de um dos conteúdos mais
 
 -   **Ref. conteúdo**: [https://apod.nasa.gov/apod/](https://apod.nasa.gov/apod/ "https://apod.nasa.gov/apod/")
 
-### **Não pode faltar**
+-   Linguagem primaria Kotlin
+-   Projeto usando arquitetura MVP 
+-   Kotlin Coroutines 
+-   Koin para injeção de dependências 
+-   Lottie para animações
+-   LiveData 
 
--   Gerenciamento de dependências "Gradle"
--   Linguagem Kotlin
--   Mapeamento JSON -> Objeto (GSON / Jackson / Moshi / etc)
+![onboarding_nasa (1)](https://user-images.githubusercontent.com/47648982/129750716-1caf0bd6-4af5-4f80-81a7-80b518708537.jpg)
 
+Exemplo da tela de boas vindas. 
 
-### **Plus**
+![nasa_home (1)](https://user-images.githubusercontent.com/47648982/129750757-63278e60-f77b-46f0-9510-e23cfd9b02f8.jpg)
 
--   Tela com gestos para ampliar a foto do dia
--   Apresentar os vídeos
--   Testes unitários
--   Testes de Interface
--   Testes funcionais
--   Cache de imagens e da API
--   Suporte a mudanças de orientação das telas sem perder estado
+Exemplo da tela home do aplicativo. 
 
+![nasa_detatails (1)](https://user-images.githubusercontent.com/47648982/129750821-cf09c6ee-95dd-47f2-ac66-d0bfaf408e7e.jpg)
 
-### **Como enviar?**
-
-A solução precisa ser enviada via pull request para este repositório.
-
-1.  Faça o fork desse repositório
-2.  Desenvolva
-3.  Execute os commits, de forma "organizada e semântica"
-4.  Use Github, para realizar Pull Request.
-
-Se possível deixe o fork público para facilitar a inspeção do código.
+Assim que clicado em uma imagem abre uma pagina de detalhes com a descrição da foto. 
 
 
 
-### **O que será avaliado?**
-
-- Qualidade do código  
-• Comentários  
-• Organização  
-• Semântica  
-• Código idiomático com base na linguagem  
-• Descrição dos commits  
-
-- Arquitetura  
-• Qual a arquitetura escolhida  
-• Implementação  
-
-- Otimização de recursos  
-• Cache de API  
-• Cache de Imagens  
-
-- UX  
-• Fluidez na utilização do app  
-
-
-### **Dica**
-Não existe uma api para trazer mais de um conteúdo por vez, como fazer?
